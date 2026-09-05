@@ -1,0 +1,139 @@
+- id: brave-jesien-2026
+  track: edukacja
+  start: 2026-09
+  end: 2026-11
+  title: Kursy BRAVE.courses, jesień 2026
+  org: BRAVE.courses
+  summary: null       # TODO
+  tools: []
+  status: planowany
+  link: null
+  items:
+    - title: 10xDevs 4.0
+      status: planowany
+    - title: MEGA.dev
+      status: planowany
+    - title: AI Product Heroes 3
+      status: planowany
+    - title: AI Tech Leaders
+      status: planowany
+    - title: AI_Sales 2
+      status: planowany
+    - title: AI_Marketers 3
+      status: planowany
+
+- id: brave-wiosna-2026
+  track: edukacja
+  start: 2026-03
+  end: 2026-06
+  title: Kursy BRAVE.courses, wiosna 2026
+  org: BRAVE.courses
+  summary: >
+    Cztery kursy z serii AI_devs, AI Product Heroes, 10xDevs i AI_Managers.
+    AI_Managers 3 zaliczony canvasem wdrożeniowym; certyfikat wystawiony 2026-07-11.
+  tools: []
+  status: ukończony
+  link: https://credsverse.com/credentials/a133097d-ffce-40d2-8ece-9c5762ab71fe
+  items:
+    - title: AI_Managers 3
+      status: ukończony
+    - title: 10xDevs 3.0
+      status: bez zaliczenia
+    - title: AI Product Heroes 2
+      status: bez zaliczenia
+    - title: AI_devs 4
+      status: bez zaliczenia
+
+- id: ai-devs-3
+  track: edukacja
+  start: 2024-11
+  end: 2024-12
+  title: AI_devs 3 Agents
+  org: BRAVE.courses
+  summary: >
+    Pięciotygodniowy kurs praktyczny z narzędzi generatywnej AI, nastawiony
+    na budowę systemów autonomicznych. Certyfikat wystawiony 2024-12-09.
+  tools: []
+  status: ukończony
+  link: https://credsverse.com/credentials/ccca4b43-1963-4db8-aeff-60691af4f2bb
+
+- id: swps-agile-leadership
+  track: edukacja
+  start: 2020        # TODO: miesiąc
+  end: 2021          # TODO: miesiąc
+  title: Agile Leadership
+  org: SWPS University
+  summary: null       # TODO: rodzaj programu (podyplomowe? kurs?) i czego dotyczył
+  tools: []
+
+- id: politechnika-lubelska
+  track: edukacja
+  start: 2008        # TODO: miesiąc
+  end: 2013          # TODO: miesiąc
+  title: Magister inżynier, Inteligentne Technologie w Elektrotechnice
+  org: Politechnika Lubelska
+  summary: null       # TODO: jedno zdanie o studiach, temat pracy magisterskiej, jeśli ma trafić na stronę
+  tools: []
+
+- id: istqb-ctfl
+  track: edukacja
+  start: null        # TODO: rok i miesiąc
+  end: null
+  title: ISTQB Certified Tester Foundation Level
+  org: ISTQB
+  summary: Certyfikat ISTQB na poziomie podstawowym.
+  tools: []
+
+- id: sii-zostan-testerem
+  track: edukacja
+  start: null        # TODO: rok i miesiąc
+  end: null
+  title: Kurs „Zostań testerem"
+  org: Sii
+  summary: null       # TODO: jedno zdanie o kursie
+  tools: []
+
+- id: sii-automation-tester
+  track: edukacja
+  start: null        # TODO: rok i miesiąc
+  end: null
+  title: Kurs „Automation Tester"
+  org: Sii
+  summary: null       # TODO: jedno zdanie o kursie, użyte narzędzia
+  tools: []
+
+- id: testuj-pl-selenium
+  track: edukacja
+  start: null        # TODO: rok i miesiąc
+  end: null
+  title: Selenium WebDriver z podstawami programowania w Pythonie
+  org: Testuj.pl
+  summary: null       # TODO: jedno zdanie o kursie
+  tools: [Selenium, Python]
+
+- id: warsztaty-public-speaking
+  track: edukacja
+  start: null        # TODO: rok, organizator
+  end: null
+  title: Warsztaty public speaking
+  org: null
+  summary: null       # TODO
+  tools: []
+
+- id: warsztaty-kultura-feedbacku
+  track: edukacja
+  start: null        # TODO: rok, organizator
+  end: null
+  title: Warsztaty budowania kultury feedbacku
+  org: null
+  summary: null       # TODO
+  tools: []
+
+- id: internal-product-bootcamp
+  track: edukacja
+  start: null        # TODO: rok, w której firmie
+  end: null
+  title: Internal Product Bootcamp
+  org: null
+  summary: null       # TODO
+  tools: []

@@ -1,0 +1,71 @@
+- id: strona-mariusznazar
+  track: artefakt
+  start: 2026-09
+  end: null
+  ongoing: true
+  title: Ta strona
+  org: null
+  summary: >
+    Własna strona z bio i materiałami o warsztacie pracy. Zbudowana na Astro,
+    hostowana na Cloudflare Pages.
+  tools: [Astro, Cloudflare Pages]
+  access: publiczny
+  link: null         # TODO: adres po uruchomieniu
+
+- id: canvas-ai-managers-3
+  track: artefakt
+  start: 2026-06     # TODO: miesiąc oddania
+  end: null
+  title: Canvas wdrożenia AI z kursu AI_Managers 3
+  org: null
+  summary: >
+    Praca zaliczeniowa kursu: canvas projektu wdrożenia AI w organizacji.
+    Do pokazania po anonimizacji albo w formie opisu.
+  tools: []
+  access: do-pokazania
+  link: null         # TODO: po anonimizacji
+
+- id: esvelo-artefakty-2021
+  track: artefakt
+  start: 2021-06     # TODO: rozdzielić na trzy wpisy, gdy znane będą miesiące
+  end: 2021-11
+  title: Newsletter, artykuły i prezentacje o feedbacku
+  org: Esvelo
+  summary: >
+    Trzy rzeczy z pół roku w Esvelo. Newsletter działu QA (koncepcja i wdrożenie).
+    Dwa teksty dla grupy kultury feedbacku, jedyny artefakt z tego okresu, który
+    da się pokazać. Dwie prezentacje ogólnofirmowe.
+  tools: []
+  access: do-pokazania
+  link: null         # TODO: gdzie i w jakiej formie opublikować artykuły
+  items:
+    - title: Newsletter QA
+      status: niepubliczny
+    - title: Dwa artykuły wewnętrzne o feedbacku
+      status: do pokazania
+    - title: Prezentacje „Feed with feedback" i „Psychological safety in teams"
+      status: niepubliczny
+
+- id: framework-e2e-venturedevs
+  track: artefakt
+  start: 2019        # TODO: miesiąc
+  end: 2021-06
+  title: Pierwszy framework do testów E2E w firmie
+  org: VentureDevs
+  summary: Framework do automatyzacji testów end-to-end, pierwszy w firmie.   # TODO: technologia, kto z niego korzystał
+  tools: [automatyzacja E2E]
+  access: niepubliczny
+  link: null
+
+- id: projekty-ftth
+  track: artefakt
+  start: 2014-12
+  end: 2016-12
+  title: Kilkadziesiąt projektów wykonawczych i powykonawczych FTTH
+  org: Deon
+  summary: >
+    Dokumentacja podłączeń bloków mieszkalnych do sieci światłowodowej
+    w Lublinie, Radomiu i Rzeszowie.
+  tools: [projekty wykonawcze, projekty powykonawcze]
+  access: niepubliczny
+  link: null
