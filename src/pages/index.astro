@@ -1,16 +1,23 @@
 ---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Mariusz Nazar</title>
-	</head>
-	<body>
-		<p>Mariusz Nazar. This site is being built; come back soon.</p>
-	</body>
-</html>
+<Base title={site.name} description={site.description}>
+  <section class="hero">
+    <h1 class="hero-name">{site.name}</h1>
+    <p class="hero-tagline mono">{site.tagline}</p>
+    {site.intro.map((paragraph) => <p class="hero-intro">{paragraph}</p>)}
+    <p class="hero-links mono">
+      {site.links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </p>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 56px 0 40px; }
+  .hero-name { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 6px; }
+  .hero-tagline { color: var(--accent); font-size: 0.9rem; margin: 0 0 24px; }
+  .hero-intro { max-width: var(--measure); font-size: 1.05rem; margin: 0 0 14px; }
+  .hero-links { display: flex; gap: 20px; font-size: 0.85rem; margin: 20px 0 0; }
+</style>

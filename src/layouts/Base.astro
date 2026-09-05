@@ -1,0 +1,55 @@
+---
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+---
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="topbar container">
+      <a class="topbar-name" href="/">{site.name}</a>
+      <span class="topbar-note mono">materiały wkrótce</span>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="footer container">
+      <a href={site.repo}>kod tej strony</a>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .topbar {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-top: 20px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-name { font-family: var(--font-display); font-weight: 500; color: var(--fg); border: 0; }
+  .topbar-note { font-size: 0.75rem; color: var(--fg-dim); }
+  .footer {
+    margin-top: 64px; padding-top: 16px; padding-bottom: 32px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--fg-dim);
+  }
+</style>

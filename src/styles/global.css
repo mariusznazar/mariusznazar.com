@@ -1,0 +1,55 @@
+:root {
+  --bg: #121110;
+  --bg-card: #1a1816;
+  --line: #2a2724;
+  --line-soft: #1f1c1a;
+  --fg: #efe8dc;
+  --fg-muted: #a89e94;
+  --fg-dim: #7f766d;
+  --accent: #d9704c;
+  --month: 9px;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-text: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --measure: 60ch;
+  --page-max: 1280px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { color-scheme: dark; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; }
+a:hover { color: var(--fg); }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+
+.mono { font-family: var(--font-mono); }
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
