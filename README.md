@@ -8,6 +8,15 @@ Source of [mariusznazar.com](https://mariusznazar.com), the personal site of Mar
 - Hand-written CSS, no UI framework, no client-side JavaScript by default
 - Hosted on Cloudflare Pages, domain and DNS at Cloudflare
 
+## Content
+
+Timeline entries live in `src/content/timeline/*.yaml` (one file per track: work, artefacts,
+education). Dates are `YYYY-MM` or `YYYY`; `end: null` means "ongoing" for work (and for an
+artefact with `ongoing: true`), otherwise a one-month point. Entries in one track must not
+overlap in time — the build fails and names the pair; merge them with `items` or fix the dates.
+Header copy and links are in `src/data/site.ts`. Design notes: the vault spec
+`docs/superpowers/specs/2026-09-05-wizytowka-strona-glowna-design.md`.
+
 ## Working locally
 
 Requires Node 22.12 or newer.
