@@ -1,43 +1,26 @@
-# Astro Starter Kit: Minimal
+# mariusznazar.com
+
+Source of [mariusznazar.com](https://mariusznazar.com), the personal site of Mariusz Nazar.
+
+## Stack
+
+- [Astro](https://astro.build) with content in Markdown, TypeScript (strict)
+- Hand-written CSS, no UI framework, no client-side JavaScript by default
+- Hosted on Cloudflare Pages, domain and DNS at Cloudflare
+
+## Working locally
+
+Requires Node 22.12 or newer.
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev      # dev server at http://localhost:4321
+npm run build    # static output in ./dist
+npm run preview  # serve ./dist locally
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deployment
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Every push to `main` triggers a build on Cloudflare Pages (`npm run build`, output `dist`)
+and publishes the result at https://mariusznazar.com. Pushes to other branches get a
+preview URL. There is no separate deploy step.
