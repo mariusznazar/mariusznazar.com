@@ -4,7 +4,7 @@ import { file } from 'astro/loaders';
 /** YAML reads a bare year (2020) as a number; normalize to string and validate YYYY or YYYY-MM. */
 const yearMonth = z.preprocess(
   (v) => (v === null || v === undefined ? null : String(v)),
-  z.string().regex(/^\d{4}(-\d{2})?$/).nullable(),
+  z.string().regex(/^\d{4}(-(0[1-9]|1[0-2]))?$/).nullable(),
 );
 
 const base = {

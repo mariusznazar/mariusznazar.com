@@ -26,6 +26,9 @@ describe('monthIndex', () => {
   test('rejects other formats', () => {
     expect(() => monthIndex('12/2021', 'start')).toThrow();
   });
+  test('rejects an out-of-range month', () => {
+    expect(() => monthIndex('2021-13', 'start')).toThrow();
+  });
 });
 
 test('currentMonth', () => {
@@ -62,16 +65,27 @@ describe('resolveSpans', () => {
     expect(spans.some((s) => s.id === 'planned')).toBe(false);
     expect(by('started-planned').endMonth).toBe(NOW);
   });
+  test('displayEndMonth keeps the declared end, unclamped', () => {
+    const started = by('started-planned');
+    expect(started.endMonth).toBe(NOW);
+    expect(started.displayEndMonth).toBe(M(2026, 11));
+    expect(formatRange(started)).toBe('2026-09 → 2026-11');
+  });
   test('missing start is skipped', () => {
     expect(spans.some((s) => s.id === 'undated')).toBe(false);
   });
   test('year-only dates are approx', () => {
     expect(by('swps')).toMatchObject({ startMonth: M(2020, 1), endMonth: M(2021, 12), approxStart: true, approxEnd: true });
   });
+  test('end before start throws', () => {
+    expect(() =>
+      resolveSpans([{ id: 'x', track: 'praca', start: '2021-06', end: '2021-01' }], NOW),
+    ).toThrow(/x/);
+  });
 });
 
 const span = (p: Partial<Span> & Pick<Span, 'id' | 'track' | 'startMonth' | 'endMonth'>): Span => ({
-  approxStart: false, approxEnd: false, ongoing: false, point: false, ...p,
+  approxStart: false, approxEnd: false, ongoing: false, point: false, displayEndMonth: p.endMonth, ...p,
 });
 
 describe('applyTouching', () => {
@@ -86,6 +100,14 @@ describe('applyTouching', () => {
     const a = span({ id: 'a', track: 'praca', startMonth: M(2019, 1), endMonth: M(2021, 6) });
     const b = span({ id: 'b', track: 'artefakt', startMonth: M(2021, 6), endMonth: M(2021, 6), point: true });
     expect(applyTouching([a, b])).toEqual([a, b]);
+  });
+  test('layout-adjusted end does not leak into the printed date', () => {
+    const vd = span({ id: 'vd', track: 'praca', startMonth: M(2019, 1), endMonth: M(2021, 6) });
+    const esvelo = span({ id: 'esvelo', track: 'praca', startMonth: M(2021, 6), endMonth: M(2021, 11) });
+    const out = applyTouching([vd, esvelo]);
+    const touchedVd = out.find((s) => s.id === 'vd')!;
+    expect(touchedVd.endMonth).toBe(M(2021, 5));
+    expect(formatRange(touchedVd)).toBe('2019-01 → 2021-06');
   });
 });
 
@@ -126,6 +148,9 @@ describe('grid', () => {
     expect(grid.years[0]).toEqual({ year: 2026, row: 1 });
     expect(grid.years.find((y) => y.year === 2025)).toEqual({ year: 2025, row: rowOf(M(2025, 1), NOW) });
     expect(grid.years.at(-1)).toEqual({ year: 2011, row: rowOf(M(2011, 7), NOW) });
+  });
+  test('rejects an empty span list', () => {
+    expect(() => buildGrid([], NOW)).toThrow();
   });
 });
 

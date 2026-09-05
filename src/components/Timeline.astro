@@ -19,7 +19,11 @@ const education = await getCollection('education');
 
 type AnyEntry = (typeof work)[number] | (typeof artefacts)[number] | (typeof education)[number];
 const all: AnyEntry[] = [...work, ...artefacts, ...education];
-const byId = new Map(all.map((e) => [e.id, e]));
+const byId = new Map<string, AnyEntry>();
+for (const e of all) {
+  if (byId.has(e.id)) throw new Error(`Duplicate timeline entry id "${e.id}"`);
+  byId.set(e.id, e);
+}
 
 const entries: TimelineEntry[] = all.map((e) => ({
   id: e.id,
@@ -81,7 +85,7 @@ const placed = spans.map((span) => ({
   <h2 class="label">Oś czasu</h2>
 
   <div class="timeline-wrap">
-    {TRACKS.map(({ track, label }, i) => (
+    {TRACKS.map(({ track }, i) => (
       <input type="radio" name="track" id={`track-${track}`} class="track-radio visually-hidden" checked={i === 0} />
     ))}
     <div class="track-switch mono" role="group" aria-label="Tor osi czasu">
@@ -150,15 +154,24 @@ const placed = spans.map((span) => ({
   .head-cell { grid-column: var(--col); grid-row: var(--row-start) / var(--row-end); min-width: 0; z-index: 2; }
 
   .track-switch { display: none; }
+  .track-radio { display: none; }
 
   @media (max-width: 719px) {
+    .track-radio {
+      display: block; position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
     .track-switch {
       display: flex; gap: 8px; margin-bottom: 14px; font-size: 0.8rem;
     }
     .track-switch label {
       padding: 6px 12px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg-muted); cursor: pointer;
     }
-    .track-radio:focus-visible ~ .track-switch label { outline: 1px dotted var(--fg-dim); }
+    #track-praca:focus-visible ~ .track-switch label[for="track-praca"],
+    #track-artefakt:focus-visible ~ .track-switch label[for="track-artefakt"],
+    #track-edukacja:focus-visible ~ .track-switch label[for="track-edukacja"] {
+      outline: 1px dotted var(--fg-dim); outline-offset: 2px;
+    }
 
     .timeline { grid-template-columns: 48px 1fr; }
     .timeline [data-track] { grid-column: 2; display: none; }

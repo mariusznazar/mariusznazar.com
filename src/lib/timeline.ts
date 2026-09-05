@@ -15,15 +15,17 @@ export interface Span {
   track: Track;
   /** absolute month: year * 12 + (month - 1) */
   startMonth: number;
-  /** inclusive */
+  /** inclusive; may be layout-adjusted by applyTouching or clamped to now */
   endMonth: number;
+  /** the declared end month, unaffected by layout adjustments; used for display */
+  displayEndMonth: number;
   approxStart: boolean;
   approxEnd: boolean;
   ongoing: boolean;
   point: boolean;
 }
 
-const DATE_RE = /^(\d{4})(?:-(\d{2}))?$/;
+const DATE_RE = /^(\d{4})(?:-(0[1-9]|1[0-2]))?$/;
 
 export function monthIndex(value: string, edge: 'start' | 'end'): { month: number; approx: boolean } {
   const m = DATE_RE.exec(value);
@@ -47,20 +49,26 @@ export function resolveSpans(entries: TimelineEntry[], now: number): Span[] {
     if (start.month > now) continue;
     const ongoing = e.end === null && (e.track === 'praca' || e.ongoing === true);
     let endMonth = start.month;
+    let displayEndMonth = start.month;
     let approxEnd = false;
     let point = false;
     if (ongoing) {
       endMonth = now;
+      displayEndMonth = now;
     } else if (e.end === null) {
       point = true;
     } else {
       const end = monthIndex(e.end, 'end');
+      if (end.month < start.month) {
+        throw new Error(`Timeline entry "${e.id}" ends (${e.end}) before it starts (${e.start})`);
+      }
       endMonth = Math.min(end.month, now);
+      displayEndMonth = end.month;
       approxEnd = end.approx;
     }
     spans.push({
       id: e.id, track: e.track,
-      startMonth: start.month, endMonth,
+      startMonth: start.month, endMonth, displayEndMonth,
       approxStart: start.approx, approxEnd, ongoing, point,
     });
   }
@@ -105,6 +113,7 @@ export interface Grid {
 }
 
 export function buildGrid(spans: Span[], now: number): Grid {
+  if (spans.length === 0) throw new Error('buildGrid needs at least one span');
   const bottom = Math.min(...spans.map((s) => s.startMonth));
   const top = now;
   const years: Grid['years'] = [];
@@ -128,5 +137,5 @@ export function formatRange(span: Span): string {
   const start = formatMonth(span.startMonth, span.approxStart);
   if (span.ongoing) return `${start} → trwa`;
   if (span.point) return start;
-  return `${start} → ${formatMonth(span.endMonth, span.approxEnd)}`;
+  return `${start} → ${formatMonth(span.displayEndMonth, span.approxEnd)}`;
 }

@@ -14,8 +14,11 @@ Timeline entries live in `src/content/timeline/*.yaml` (one file per track: work
 education). Dates are `YYYY-MM` or `YYYY`; `end: null` means "ongoing" for work (and for an
 artefact with `ongoing: true`), otherwise a one-month point. Entries in one track must not
 overlap in time — the build fails and names the pair; merge them with `items` or fix the dates.
-Header copy and links are in `src/data/site.ts`. Design notes: the vault spec
-`docs/superpowers/specs/2026-09-05-wizytowka-strona-glowna-design.md`.
+Header copy and links are in `src/data/site.ts`. Design notes live in the author's private
+notes vault (spec `2026-09-05-wizytowka-strona-glowna-design.md`), not in this repo.
+
+The timeline's current month is computed at build time; the site rebuilds only on push, so a
+planned entry appears once a build runs after its start month.
 
 ## Working locally
 
