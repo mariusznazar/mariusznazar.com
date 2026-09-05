@@ -150,4 +150,27 @@ const placed = spans.map((span) => ({
   .head-cell { grid-column: var(--col); grid-row: var(--row-start) / var(--row-end); min-width: 0; z-index: 2; }
 
   .track-switch { display: none; }
+
+  @media (max-width: 719px) {
+    .track-switch {
+      display: flex; gap: 8px; margin-bottom: 14px; font-size: 0.8rem;
+    }
+    .track-switch label {
+      padding: 6px 12px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg-muted); cursor: pointer;
+    }
+    .track-radio:focus-visible ~ .track-switch label { outline: 1px dotted var(--fg-dim); }
+
+    .timeline { grid-template-columns: 48px 1fr; }
+    .timeline [data-track] { grid-column: 2; display: none; }
+
+    #track-praca:checked ~ .timeline [data-track="praca"],
+    #track-artefakt:checked ~ .timeline [data-track="artefakt"],
+    #track-edukacja:checked ~ .timeline [data-track="edukacja"] { display: block; }
+
+    #track-praca:checked ~ .track-switch label[for="track-praca"],
+    #track-artefakt:checked ~ .track-switch label[for="track-artefakt"],
+    #track-edukacja:checked ~ .track-switch label[for="track-edukacja"] {
+      color: var(--fg); border-color: var(--accent);
+    }
+  }
 </style>
