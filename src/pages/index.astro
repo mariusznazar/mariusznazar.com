@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Timeline from '../components/Timeline.astro';
 import { site } from '../data/site';
 ---
 
@@ -12,6 +13,8 @@ import { site } from '../data/site';
       {site.links.map((link) => <a href={link.href}>{link.label}</a>)}
     </p>
   </section>
+
+  <Timeline />
 </Base>
 
 <style>

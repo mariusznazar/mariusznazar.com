@@ -1,0 +1,57 @@
+---
+export interface CardView {
+  id: string;
+  title: string;
+  org: string | null;
+  dateText: string;
+  approx: boolean;
+  summary: string | null;
+  tools: string[];
+  items: Array<{ title: string; status?: string }>;
+  badge: { text: string; accent: boolean } | null;
+  link: { href: string; label: string } | null;
+}
+interface Props { card: CardView }
+const { card } = Astro.props;
+---
+
+<div class="card">
+  <h3 class="card-title">{card.title}</h3>
+  {card.org && <p class="card-org">{card.org}</p>}
+  <p class="card-date mono">
+    {card.dateText}{card.approx && <span class="card-approx"> · mies. do ustalenia</span>}
+    {card.badge && <span class:list={['card-badge', { accent: card.badge.accent }]}> · {card.badge.text}</span>}
+  </p>
+  {card.summary && <p class="card-summary">{card.summary}</p>}
+  {card.items.length > 0 && (
+    <ul class="card-items">
+      {card.items.map((item) => (
+        <li>{item.title}{item.status && <span class="card-item-status mono"> · {item.status}</span>}</li>
+      ))}
+    </ul>
+  )}
+  {card.tools.length > 0 && (
+    <p class="card-tools">{card.tools.map((tool) => <span class="chip mono">{tool}</span>)}</p>
+  )}
+  {card.link && <p class="card-link mono"><a href={card.link.href}>{card.link.label}</a></p>}
+</div>
+
+<style>
+  .card { padding: 10px 12px 10px 14px; min-width: 0; font-size: 0.85rem; line-height: 1.45; }
+  .card-title { font-size: 0.95rem; margin: 0 0 2px; }
+  .card-org { color: var(--fg-muted); font-size: 0.8rem; margin: 0 0 4px; }
+  .card-date { color: var(--fg-dim); font-size: 0.72rem; margin: 0 0 6px; }
+  .card-approx { font-style: italic; }
+  .card-badge { color: var(--fg-dim); }
+  .card-badge.accent { color: var(--accent); }
+  .card-summary { margin: 0 0 6px; color: var(--fg); }
+  .card-items { margin: 4px 0 6px; padding-left: 16px; }
+  .card-items li { margin: 0 0 2px; }
+  .card-item-status { color: var(--fg-dim); font-size: 0.72rem; }
+  .card-tools { margin: 0; }
+  .chip {
+    display: inline-block; font-size: 0.68rem; padding: 1px 6px; margin: 0 4px 4px 0;
+    background: var(--bg); color: var(--fg-muted); border: 1px solid var(--line); border-radius: 2px;
+  }
+  .card-link { margin: 6px 0 0; font-size: 0.75rem; }
+</style>

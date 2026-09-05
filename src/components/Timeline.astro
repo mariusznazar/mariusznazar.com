@@ -1,0 +1,153 @@
+---
+import { getCollection } from 'astro:content';
+import TimelineCard, { type CardView } from './TimelineCard.astro';
+import {
+  applyTouching, buildGrid, currentMonth, findOverlaps, formatRange, resolveSpans, rowOf,
+  type Span, type TimelineEntry, type Track,
+} from '../lib/timeline';
+
+const COLUMN: Record<Track, number> = { praca: 2, artefakt: 3, edukacja: 4 };
+const TRACKS: Array<{ track: Track; label: string }> = [
+  { track: 'praca', label: 'Praca' },
+  { track: 'artefakt', label: 'Artefakty' },
+  { track: 'edukacja', label: 'Edukacja' },
+];
+
+const work = await getCollection('work');
+const artefacts = await getCollection('artefacts');
+const education = await getCollection('education');
+
+type AnyEntry = (typeof work)[number] | (typeof artefacts)[number] | (typeof education)[number];
+const all: AnyEntry[] = [...work, ...artefacts, ...education];
+const byId = new Map(all.map((e) => [e.id, e]));
+
+const entries: TimelineEntry[] = all.map((e) => ({
+  id: e.id,
+  track: e.data.track,
+  start: e.data.start,
+  end: e.data.end,
+  ongoing: 'ongoing' in e.data ? e.data.ongoing : undefined,
+}));
+
+const now = currentMonth();
+const spans = applyTouching(resolveSpans(entries, now));
+const overlaps = findOverlaps(spans);
+if (overlaps.length > 0) {
+  throw new Error(
+    'Timeline entries overlap in the same track: ' +
+      overlaps.map(([a, b]) => `${a} × ${b}`).join(', ') +
+      '. Merge them with `items` or fix the dates.',
+  );
+}
+const grid = buildGrid(spans, now);
+
+function toCard(span: Span): CardView {
+  const e = byId.get(span.id)!;
+  const d = e.data;
+  let badge: CardView['badge'] = null;
+  let link: CardView['link'] = null;
+  if (d.track === 'edukacja') {
+    if (d.status) badge = { text: d.status, accent: d.status === 'ukończony' };
+    if (d.link) link = { href: d.link, label: 'certyfikat' };
+  } else if (d.track === 'artefakt') {
+    badge = { text: d.access.replace('-', ' '), accent: d.access === 'publiczny' };
+    if (d.link) link = { href: d.link, label: 'zobacz' };
+  }
+  return {
+    id: span.id,
+    title: d.title,
+    org: d.org,
+    dateText: formatRange(span),
+    approx: span.approxStart || span.approxEnd,
+    summary: d.summary,
+    tools: d.tools,
+    items: d.items ?? [],
+    badge,
+    link,
+  };
+}
+
+const placed = spans.map((span) => ({
+  span,
+  card: toCard(span),
+  column: COLUMN[span.track],
+  rowStart: rowOf(span.endMonth, grid.top) + 1, // +1: row 1 of the CSS grid is the header
+  rowEnd: rowOf(span.startMonth, grid.top) + 2,
+  current: span.ongoing,
+}));
+---
+
+<section class="timeline-section">
+  <h2 class="label">Oś czasu</h2>
+
+  <div class="timeline-wrap">
+    {TRACKS.map(({ track, label }, i) => (
+      <input type="radio" name="track" id={`track-${track}`} class="track-radio visually-hidden" checked={i === 0} />
+    ))}
+    <div class="track-switch mono" role="group" aria-label="Tor osi czasu">
+      {TRACKS.map(({ track, label }) => <label for={`track-${track}`}>{label}</label>)}
+    </div>
+
+    <div class="timeline" style={`--rows: ${grid.rowCount}`}>
+      <div class="head head-year mono">rok</div>
+      {TRACKS.map(({ track, label }) => (
+        <div class="head label" data-track={track} style={`--col: ${COLUMN[track]}`}>{label}</div>
+      ))}
+
+      {grid.years.map((y) => (
+        <>
+          <div class="year-line" style={`--row: ${y.row + 1}`}></div>
+          <div class="year mono" style={`--row: ${y.row + 1}`}>{y.year}</div>
+        </>
+      ))}
+
+      {placed.map((p) => (
+        <>
+          <div
+            class:list={['bar', { current: p.current, open: p.span.ongoing }]}
+            data-track={p.span.track}
+            style={`--col: ${p.column}; --row-start: ${p.rowStart}; --row-end: ${p.rowEnd}`}
+          ></div>
+          <div
+            class="head-cell"
+            data-track={p.span.track}
+            style={`--col: ${p.column}; --row-start: ${p.rowStart}; --row-end: ${p.rowStart + 1}`}
+          >
+            <TimelineCard card={p.card} />
+          </div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-section { margin-top: 24px; }
+  .timeline-section > .label { margin-bottom: 12px; }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: 56px 1fr 1fr 1fr;
+    grid-template-rows: auto repeat(var(--rows), minmax(var(--month), auto));
+    column-gap: 14px;
+  }
+
+  .head { grid-row: 1; padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .head-year { grid-column: 1; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); }
+  .head[data-track] { grid-column: var(--col); }
+
+  .year-line { grid-column: 1 / -1; grid-row: var(--row); border-top: 1px solid var(--line-soft); z-index: 0; }
+  .year { grid-column: 1; grid-row: var(--row); align-self: start; padding-top: 3px; font-size: 0.8rem; color: var(--fg-muted); z-index: 3; }
+
+  .bar {
+    grid-column: var(--col); grid-row: var(--row-start) / var(--row-end);
+    background: var(--bg-card); border: 1px solid var(--line); border-left: 3px solid var(--fg-dim);
+    border-radius: 3px; margin-bottom: 2px; z-index: 1;
+  }
+  .bar.current { border-left-color: var(--accent); }
+  .bar.open { border-top: 1px dashed var(--accent); border-top-left-radius: 0; border-top-right-radius: 0; }
+
+  .head-cell { grid-column: var(--col); grid-row: var(--row-start) / var(--row-end); min-width: 0; z-index: 2; }
+
+  .track-switch { display: none; }
+</style>
