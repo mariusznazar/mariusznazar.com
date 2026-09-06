@@ -31,6 +31,7 @@ const entries: TimelineEntry[] = all.map((e) => ({
   start: e.data.start,
   end: e.data.end,
   ongoing: 'ongoing' in e.data ? e.data.ongoing : undefined,
+  endApprox: e.data.endApprox,
 }));
 
 const now = currentMonth();

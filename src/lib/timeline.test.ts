@@ -74,6 +74,11 @@ describe('resolveSpans', () => {
   test('missing start is skipped', () => {
     expect(spans.some((s) => s.id === 'undated')).toBe(false);
   });
+  test('endApprox keeps the bar at the given month but prints the year only', () => {
+    const [s] = resolveSpans([{ id: 'pl', track: 'edukacja', start: '2008', end: '2013-06', endApprox: true }], NOW);
+    expect(s).toMatchObject({ endMonth: M(2013, 6), displayEndMonth: M(2013, 6), approxEnd: true });
+    expect(formatRange(s!)).toBe('2008 → 2013');
+  });
   test('year-only dates are approx', () => {
     expect(by('swps')).toMatchObject({ startMonth: M(2020, 1), endMonth: M(2021, 12), approxStart: true, approxEnd: true });
   });

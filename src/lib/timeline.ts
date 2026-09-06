@@ -8,6 +8,8 @@ export interface TimelineEntry {
   /** 'YYYY-MM' or 'YYYY'; null = ongoing (praca / ongoing flag) or a one-month point */
   end: string | null;
   ongoing?: boolean;
+  /** end month is known well enough to place the bar, but the card shows the year only */
+  endApprox?: boolean;
 }
 
 export interface Span {
@@ -64,7 +66,7 @@ export function resolveSpans(entries: TimelineEntry[], now: number): Span[] {
       }
       endMonth = Math.min(end.month, now);
       displayEndMonth = end.month;
-      approxEnd = end.approx;
+      approxEnd = end.approx || e.endApprox === true;
     }
     spans.push({
       id: e.id, track: e.track,

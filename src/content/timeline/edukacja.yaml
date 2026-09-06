@@ -123,7 +123,8 @@
 - id: politechnika-lubelska
   track: edukacja
   start: 2008        # TODO: miesiąc
-  end: 2013          # TODO: miesiąc
+  end: 2013-06       # obrona około czerwca 2013; kafelek pokazuje sam rok
+  endApprox: true
   title: Magister inżynier, Inteligentne Technologie w Elektrotechnice
   org: Politechnika Lubelska
   summary: null       # TODO: jedno zdanie o studiach, temat pracy magisterskiej, jeśli ma trafić na stronę
