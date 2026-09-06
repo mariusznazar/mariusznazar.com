@@ -59,11 +59,65 @@
 
 - id: swps-agile-leadership
   track: edukacja
-  start: 2020        # TODO: miesiąc
-  end: 2021          # TODO: miesiąc
+  start: 2020-10     # 17.10.2020
+  end: 2021-07       # 18.07.2021
   title: Agile Leadership
   org: SWPS University
   summary: null       # TODO: rodzaj programu (podyplomowe? kurs?) i czego dotyczył
+  tools: []
+
+- id: warsztaty-public-speaking
+  track: edukacja
+  start: 2020-09     # sobota w ostatnim roku pracy w VentureDevs; dzień do ustalenia
+  end: null
+  title: Warsztaty public speaking
+  org: Kamil Kozieł
+  summary: null       # TODO
+  tools: []
+
+- id: warsztaty-kultura-feedbacku
+  track: edukacja
+  start: 2020-03     # między kursem Selenium a warsztatami public speaking; dzień do ustalenia
+  end: null
+  title: Warsztaty budowania kultury feedbacku
+  org: Natalia Pawlak
+  summary: null       # TODO
+  tools: []
+
+- id: testuj-pl-selenium
+  track: edukacja
+  start: 2019-10     # weekend w drugim roku pracy w VentureDevs; dzień do ustalenia
+  end: null
+  title: Selenium WebDriver z podstawami programowania w Pythonie
+  org: Testuj.pl
+  summary: null       # TODO: jedno zdanie o kursie
+  tools: [Selenium, Python]
+
+- id: sii-automation-tester
+  track: edukacja
+  start: 2018-04     # weekendy 14–15, 21–22 i 28–29 kwietnia 2018
+  end: null
+  title: Kurs „Automation Tester"
+  org: Sii
+  summary: null       # TODO: jedno zdanie o kursie, użyte narzędzia
+  tools: []
+
+- id: istqb-ctfl
+  track: edukacja
+  start: 2018-02     # egzamin 27.02.2018
+  end: null
+  title: ISTQB Certified Tester Foundation Level
+  org: ISTQB
+  summary: Certyfikat ISTQB na poziomie podstawowym.
+  tools: []
+
+- id: sii-zostan-testerem
+  track: edukacja
+  start: 2018-01     # weekendy 27–28 stycznia, 3–4 i 10–11 lutego 2018
+  end: 2018-02
+  title: Kurs „Zostań testerem"
+  org: Sii
+  summary: null       # TODO: jedno zdanie o kursie
   tools: []
 
 - id: politechnika-lubelska
@@ -73,67 +127,4 @@
   title: Magister inżynier, Inteligentne Technologie w Elektrotechnice
   org: Politechnika Lubelska
   summary: null       # TODO: jedno zdanie o studiach, temat pracy magisterskiej, jeśli ma trafić na stronę
-  tools: []
-
-- id: istqb-ctfl
-  track: edukacja
-  start: null        # TODO: rok i miesiąc
-  end: null
-  title: ISTQB Certified Tester Foundation Level
-  org: ISTQB
-  summary: Certyfikat ISTQB na poziomie podstawowym.
-  tools: []
-
-- id: sii-zostan-testerem
-  track: edukacja
-  start: null        # TODO: rok i miesiąc
-  end: null
-  title: Kurs „Zostań testerem"
-  org: Sii
-  summary: null       # TODO: jedno zdanie o kursie
-  tools: []
-
-- id: sii-automation-tester
-  track: edukacja
-  start: null        # TODO: rok i miesiąc
-  end: null
-  title: Kurs „Automation Tester"
-  org: Sii
-  summary: null       # TODO: jedno zdanie o kursie, użyte narzędzia
-  tools: []
-
-- id: testuj-pl-selenium
-  track: edukacja
-  start: null        # TODO: rok i miesiąc
-  end: null
-  title: Selenium WebDriver z podstawami programowania w Pythonie
-  org: Testuj.pl
-  summary: null       # TODO: jedno zdanie o kursie
-  tools: [Selenium, Python]
-
-- id: warsztaty-public-speaking
-  track: edukacja
-  start: null        # TODO: rok, organizator
-  end: null
-  title: Warsztaty public speaking
-  org: null
-  summary: null       # TODO
-  tools: []
-
-- id: warsztaty-kultura-feedbacku
-  track: edukacja
-  start: null        # TODO: rok, organizator
-  end: null
-  title: Warsztaty budowania kultury feedbacku
-  org: null
-  summary: null       # TODO
-  tools: []
-
-- id: internal-product-bootcamp
-  track: edukacja
-  start: null        # TODO: rok, w której firmie
-  end: null
-  title: Internal Product Bootcamp
-  org: null
-  summary: null       # TODO
   tools: []
