@@ -4,7 +4,7 @@
   end: 2026-11
   title: Kursy BRAVE.courses, jesień 2026
   org: BRAVE.courses
-  summary: null       # TODO
+  summary: "Cel tych kursów: zdobyć wiedzę i znaleźć sposoby na praktyczne użycie AI w codziennej pracy."
   tools: []
   status: planowany
   link: null
@@ -33,16 +33,17 @@
     AI_Managers 3 zaliczony canvasem wdrożeniowym; certyfikat wystawiony 2026-07-11.
   tools: []
   status: ukończony
-  link: https://credsverse.com/credentials/a133097d-ffce-40d2-8ece-9c5762ab71fe
+  link: null
   items:
     - title: AI_Managers 3
       status: ukończony
+      link: https://credsverse.com/credentials/a133097d-ffce-40d2-8ece-9c5762ab71fe
     - title: 10xDevs 3.0
-      status: bez zaliczenia
+      status: ukończony
     - title: AI Product Heroes 2
-      status: bez zaliczenia
+      status: ukończony
     - title: AI_devs 4
-      status: bez zaliczenia
+      status: ukończony
 
 - id: ai-devs-3
   track: edukacja
@@ -63,34 +64,38 @@
   end: 2021-07       # 18.07.2021
   title: Agile Leadership
   org: SWPS University
-  summary: null       # TODO: rodzaj programu (podyplomowe? kurs?) i czego dotyczył
+  summary: >
+    Studia podyplomowe o przywództwie służebnym i pracy z zespołami
+    w warunkach niepewności oraz ciągłej zmiany.
   tools: []
 
 - id: warsztaty-public-speaking
   track: edukacja
-  start: 2020-09     # sobota w ostatnim roku pracy w VentureDevs; dzień do ustalenia
+  start: 2020-09     # miesiąc umowny; rzeczywisty nieustalony
   end: null
   title: Warsztaty public speaking
   org: Kamil Kozieł
-  summary: null       # TODO
+  summary: Warsztaty o przygotowaniu do prezentacji.
   tools: []
 
 - id: warsztaty-kultura-feedbacku
   track: edukacja
-  start: 2020-03     # między kursem Selenium a warsztatami public speaking; dzień do ustalenia
+  start: 2020-03     # miesiąc umowny; rzeczywisty nieustalony
   end: null
   title: Warsztaty budowania kultury feedbacku
   org: Natalia Pawlak
-  summary: null       # TODO
-  tools: []
+  summary: >
+    Techniki udzielania informacji zwrotnej oraz sposoby budowania
+    i wzmacniania kultury feedbacku w organizacji.
+  tools: [FUKO, SBI]
 
 - id: testuj-pl-selenium
   track: edukacja
-  start: 2019-10     # weekend w drugim roku pracy w VentureDevs; dzień do ustalenia
+  start: 2019-03     # miesiąc orientacyjny, rok potwierdzony
   end: null
   title: Selenium WebDriver z podstawami programowania w Pythonie
   org: Testuj.pl
-  summary: null       # TODO: jedno zdanie o kursie
+  summary: Podstawy pisania testów automatycznych.
   tools: [Selenium, Python]
 
 - id: sii-automation-tester
@@ -99,7 +104,7 @@
   end: null
   title: Kurs „Automation Tester"
   org: Sii
-  summary: null       # TODO: jedno zdanie o kursie, użyte narzędzia
+  summary: Podstawy pracy testera automatyzującego.
   tools: []
 
 - id: istqb-ctfl
@@ -117,15 +122,14 @@
   end: 2018-02
   title: Kurs „Zostań testerem"
   org: Sii
-  summary: null       # TODO: jedno zdanie o kursie
+  summary: Podstawy testowania oprogramowania i przygotowanie do certyfikacji ISTQB.
   tools: []
 
 - id: politechnika-lubelska
   track: edukacja
-  start: 2008        # TODO: miesiąc
-  end: 2013-06       # obrona około czerwca 2013; kafelek pokazuje sam rok
-  endApprox: true
+  start: 2008-10
+  end: 2013-06       # miesiąc przyjęty do prezentacji na osi
   title: Magister inżynier, Inteligentne Technologie w Elektrotechnice
   org: Politechnika Lubelska
-  summary: null       # TODO: jedno zdanie o studiach, temat pracy magisterskiej, jeśli ma trafić na stronę
+  summary: null
   tools: []

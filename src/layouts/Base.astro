@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '@fontsource/space-grotesk/500.css';
 import '@fontsource/space-grotesk/700.css';
 import '@fontsource/ibm-plex-sans/400.css';
@@ -6,35 +7,51 @@ import '@fontsource/ibm-plex-sans/600.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/500.css';
 import '../styles/global.css';
-import { site } from '../data/site';
+import { pagePath, site, type Locale, type Page } from '../data/site';
 
 interface Props {
   title: string;
   description: string;
+  locale: Locale;
+  page: Page;
 }
-const { title, description } = Astro.props;
+const { title, description, locale, page } = Astro.props;
+const copy = site.copy[locale];
+const currentPath = pagePath(locale, page);
+const otherLocale: Locale = locale === 'pl' ? 'en' : 'pl';
+const otherPath = pagePath(otherLocale, page);
 ---
 
-<html lang="pl">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={new URL(currentPath, Astro.site)} />
+    <link rel="alternate" hreflang="pl" href={new URL(pagePath('pl', page), Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(pagePath('en', page), Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(pagePath('pl', page), Astro.site)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
+    <ClientRouter fallback="swap" />
   </head>
   <body>
-    <header class="topbar container">
-      <a class="topbar-name" href="/">{site.name}</a>
-      <span class="topbar-note mono">materiały wkrótce</span>
+    <header class="topbar container" transition:persist="site-header" transition:animate="none">
+      <a class="topbar-name" href={pagePath(locale, 'home')}>{site.name}</a>
+      <span class="topbar-note mono">{copy.comingSoon}</span>
     </header>
     <main class="container">
+      <nav class="language-switch mono" aria-label={locale === 'pl' ? 'Język strony' : 'Page language'}>
+        <span aria-current="page">{locale.toUpperCase()}</span>
+        <span aria-hidden="true">/</span>
+        <a href={otherPath} hreflang={otherLocale} lang={otherLocale} data-astro-reload>{otherLocale.toUpperCase()}</a>
+      </nav>
       <slot />
     </main>
     <footer class="footer container">
-      <a href={site.repo}>kod tej strony</a>
+      <a href={site.repo}>{copy.sourceCode}</a>
     </footer>
   </body>
 </html>
@@ -47,6 +64,13 @@ const { title, description } = Astro.props;
   }
   .topbar-name { font-family: var(--font-display); font-weight: 500; color: var(--fg); border: 0; }
   .topbar-note { font-size: 0.75rem; color: var(--fg-dim); }
+  main { position: relative; }
+  .language-switch {
+    position: absolute; top: 16px; right: var(--gutter);
+    display: flex; gap: 6px; align-items: baseline;
+    font-size: 0.75rem; color: var(--fg-dim);
+  }
+  .language-switch [aria-current] { color: var(--fg); }
   .footer {
     margin-top: 64px; padding-top: 16px; padding-bottom: 32px;
     border-top: 1px solid var(--line);

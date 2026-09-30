@@ -1,14 +1,36 @@
+export type Locale = 'pl' | 'en';
+export type Page = 'home' | 'bio';
+
+export function pagePath(locale: Locale, page: Page): string {
+  if (locale === 'pl') return page === 'home' ? '/' : '/bio/';
+  return page === 'home' ? '/en/' : '/en/bio/';
+}
+
 export const site = {
   name: 'Mariusz Nazar',
-  tagline: 'testowanie · procesy zespołów · warsztat pracy z agentami AI',
-  intro: [
-    'Testuję oprogramowanie od 2018 roku, od 2019 w rolach QA Lead i Head of QA. Wcześniej przez siedem lat pracowałem jako inżynier elektryk: najpierw przy utrzymaniu ruchu, potem w biurach projektowych. Dziś zajmuję się jakością platformy e-commerce w VOX. Obok tego buduję własny warsztat pracy z agentami AI i opisuję go na tej stronie.',
-  ],
-  links: [
-    { label: 'GitHub', href: 'https://github.com/mariusznazar' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mariusz-nazar-100/' },
-    { label: 'e-mail', href: 'mailto:mariusznn@gmail.com' },
-  ],
   repo: 'https://github.com/mariusznazar/mariusznazar.com',
-  description: 'Mariusz Nazar: QA Lead. Testowanie, procesy zespołów, warsztat pracy z agentami AI.',
+  copy: {
+    pl: {
+      tagline: 'testowanie · procesy zespołów · warsztat pracy z agentami AI',
+      intro: [
+        'Od 2018 roku zajmuję się jakością oprogramowania i sposobem, w\u00a0jaki powstaje. Badam problemy, szukam rozwiązań i wspieram użytkowników, zespoły oraz interesariuszy. Poza pracą buduję własny warsztat i sprawdzam, co zmieniają w\u00a0nim kolejne wersje narzędzi AI.',
+      ],
+      description: 'Mariusz Nazar: QA Lead. Testowanie, procesy zespołów, warsztat pracy z agentami AI.',
+      portraitAlt: 'Portret Mariusza Nazara',
+      comingSoon: 'materiały wkrótce',
+      sourceCode: 'kod tej strony',
+      email: 'e-mail',
+    },
+    en: {
+      tagline: 'software testing · team processes · working with AI agents',
+      intro: [
+        'Since 2018, I’ve worked on software quality and how software gets built. I investigate problems, look for solutions, and support users, teams, and stakeholders. Outside work, I’m developing my own practice with AI agents and exploring how new generations of tools reshape it.',
+      ],
+      description: 'Mariusz Nazar: QA Lead. Software testing, team processes, and working with AI agents.',
+      portraitAlt: 'Portrait of Mariusz Nazar',
+      comingSoon: 'more to come',
+      sourceCode: 'source code',
+      email: 'email',
+    },
+  },
 };

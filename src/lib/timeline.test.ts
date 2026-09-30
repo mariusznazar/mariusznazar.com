@@ -114,6 +114,16 @@ describe('applyTouching', () => {
     expect(touchedVd.endMonth).toBe(M(2021, 5));
     expect(formatRange(touchedVd)).toBe('2019-01 → 2021-06');
   });
+  test('matching dates in different tracks produce bars of equal height', () => {
+    const job = span({ id: 'deon', track: 'praca', startMonth: M(2014, 12), endMonth: M(2016, 12) });
+    const nextJob = span({ id: 'pag', track: 'praca', startMonth: M(2016, 12), endMonth: M(2018, 6) });
+    const work = span({ id: 'ftth', track: 'artefakt', startMonth: M(2014, 12), endMonth: M(2016, 12) });
+    const out = applyTouching([job, nextJob, work]);
+    expect(out.find((s) => s.id === 'deon')!.endMonth).toBe(M(2016, 11));
+    expect(out.find((s) => s.id === 'ftth')!.endMonth).toBe(M(2016, 11));
+    expect(formatRange(out.find((s) => s.id === 'ftth')!)).toBe('2014-12 → 2016-12');
+    expect(findOverlaps(out)).toEqual([]);
+  });
 });
 
 describe('findOverlaps', () => {

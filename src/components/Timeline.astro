@@ -1,17 +1,39 @@
 ---
 import { getCollection } from 'astro:content';
 import TimelineCard, { type CardView } from './TimelineCard.astro';
+import { timelineEn } from '../data/timeline.en';
+import type { Locale } from '../data/site';
 import {
   applyTouching, buildGrid, currentMonth, findOverlaps, formatRange, resolveSpans, rowOf,
   type Span, type TimelineEntry, type Track,
 } from '../lib/timeline';
 
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
 const COLUMN: Record<Track, number> = { praca: 2, artefakt: 3, edukacja: 4 };
+const ui = locale === 'pl'
+  ? { timeline: 'Oś czasu', year: 'rok', switchLabel: 'Tor osi czasu', tracks: { praca: 'Praca', artefakt: 'Artefakty', edukacja: 'Edukacja' }, certificate: 'certyfikat', view: 'zobacz' }
+  : { timeline: 'Timeline', year: 'year', switchLabel: 'Timeline track', tracks: { praca: 'Work', artefakt: 'Work samples', edukacja: 'Education' }, certificate: 'certificate', view: 'view' };
 const TRACKS: Array<{ track: Track; label: string }> = [
-  { track: 'praca', label: 'Praca' },
-  { track: 'artefakt', label: 'Artefakty' },
-  { track: 'edukacja', label: 'Edukacja' },
+  { track: 'praca', label: ui.tracks.praca },
+  { track: 'artefakt', label: ui.tracks.artefakt },
+  { track: 'edukacja', label: ui.tracks.edukacja },
 ];
+const statusEn: Record<string, string> = {
+  'ukończony': 'completed',
+  'bez zaliczenia': 'not completed',
+  'planowany': 'planned',
+  'niepubliczny': 'not public',
+  'do pokazania': 'to be shared',
+};
+const accessEn = { publiczny: 'public', 'do-pokazania': 'to be shared', niepubliczny: 'not public' };
+function itemStatus(value: string): string {
+  if (locale === 'pl') return value;
+  const translation = statusEn[value];
+  if (!translation) throw new Error(`Missing English translation for timeline status "${value}"`);
+  return translation;
+}
 
 const work = await getCollection('work');
 const artefacts = await getCollection('artefacts');
@@ -23,6 +45,16 @@ const byId = new Map<string, AnyEntry>();
 for (const e of all) {
   if (byId.has(e.id)) throw new Error(`Duplicate timeline entry id "${e.id}"`);
   byId.set(e.id, e);
+}
+if (locale === 'en') {
+  const missing = all.filter((e) => !timelineEn[e.id]).map((e) => e.id);
+  const unused = Object.keys(timelineEn).filter((id) => !byId.has(id));
+  const itemMismatches = all
+    .filter((e) => (e.data.items?.length ?? 0) !== (timelineEn[e.id]?.itemTitles?.length ?? 0))
+    .map((e) => e.id);
+  if (missing.length || unused.length || itemMismatches.length) {
+    throw new Error(`English timeline translations: missing [${missing}], unused [${unused}], item mismatches [${itemMismatches}]`);
+  }
 }
 
 const entries: TimelineEntry[] = all.map((e) => ({
@@ -49,24 +81,29 @@ const grid = buildGrid(spans, now);
 function toCard(span: Span): CardView {
   const e = byId.get(span.id)!;
   const d = e.data;
+  const translated = locale === 'en' ? timelineEn[span.id]! : null;
   let badge: CardView['badge'] = null;
   let link: CardView['link'] = null;
   if (d.track === 'edukacja') {
-    if (d.status) badge = { text: d.status, accent: d.status === 'ukończony' };
-    if (d.link) link = { href: d.link, label: 'certyfikat' };
+    if (d.status) badge = { text: itemStatus(d.status), accent: d.status === 'ukończony' };
+    if (d.link) link = { href: d.link, label: ui.certificate };
   } else if (d.track === 'artefakt') {
-    badge = { text: d.access.replace('-', ' '), accent: d.access === 'publiczny' };
-    if (d.link) link = { href: d.link, label: 'zobacz' };
+    badge = { text: locale === 'pl' ? d.access.replace('-', ' ') : accessEn[d.access], accent: d.access === 'publiczny' };
+    if (d.link) link = { href: d.link, label: ui.view };
   }
   return {
     id: span.id,
-    title: d.title,
-    org: d.org,
-    dateText: formatRange(span),
+    title: translated?.title ?? d.title,
+    org: translated?.org ?? d.org,
+    dateText: formatRange(span, locale),
     approx: span.approxStart || span.approxEnd,
-    summary: d.summary,
-    tools: d.tools,
-    items: d.items ?? [],
+    summary: translated ? translated.summary : d.summary,
+    tools: translated?.tools ?? d.tools,
+    items: (d.items ?? []).map((item, index) => ({
+      title: translated ? translated.itemTitles![index]! : item.title,
+      status: item.status ? itemStatus(item.status) : undefined,
+      link: item.link,
+    })),
     badge,
     link,
   };
@@ -83,18 +120,18 @@ const placed = spans.map((span) => ({
 ---
 
 <section class="timeline-section">
-  <h2 class="label">Oś czasu</h2>
+  <h2 class="label">{ui.timeline}</h2>
 
   <div class="timeline-wrap">
     {TRACKS.map(({ track }, i) => (
       <input type="radio" name="track" id={`track-${track}`} class="track-radio visually-hidden" checked={i === 0} />
     ))}
-    <div class="track-switch mono" role="group" aria-label="Tor osi czasu">
+    <div class="track-switch mono" role="group" aria-label={ui.switchLabel}>
       {TRACKS.map(({ track, label }) => <label for={`track-${track}`}>{label}</label>)}
     </div>
 
     <div class="timeline" style={`--rows: ${grid.rowCount}`}>
-      <div class="head head-year mono">rok</div>
+      <div class="head head-year mono">{ui.year}</div>
       {TRACKS.map(({ track, label }) => (
         <div class="head label" data-track={track} style={`--col: ${COLUMN[track]}`}>{label}</div>
       ))}
@@ -118,7 +155,7 @@ const placed = spans.map((span) => ({
             data-track={p.span.track}
             style={`--col: ${p.column}; --row-start: ${p.rowStart}; --row-end: ${p.rowStart + 1}`}
           >
-            <TimelineCard card={p.card} />
+            <TimelineCard card={p.card} locale={locale} />
           </div>
         </>
       ))}

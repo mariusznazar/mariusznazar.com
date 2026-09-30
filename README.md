@@ -5,7 +5,7 @@ Source of [mariusznazar.com](https://mariusznazar.com), the personal site of Mar
 ## Stack
 
 - [Astro](https://astro.build) with content in Markdown, TypeScript (strict)
-- Hand-written CSS, no UI framework, no client-side JavaScript by default
+- Hand-written CSS, no UI framework; Astro ClientRouter keeps the shared header in place during page navigation
 - Hosted on Cloudflare Pages, domain and DNS at Cloudflare
 
 ## Content
@@ -16,6 +16,11 @@ artefact with `ongoing: true`), otherwise a one-month point. Entries in one trac
 overlap in time — the build fails and names the pair; merge them with `items` or fix the dates.
 Header copy and links are in `src/data/site.ts`. Design notes live in the author's private
 notes vault (spec `2026-09-05-wizytowka-strona-glowna-design.md`), not in this repo.
+
+The site has Polish pages at `/` and `/bio/`, and English pages at `/en/` and `/en/bio/`.
+Both languages share the same timeline dates and links. English entry text is keyed by entry
+ID in `src/data/timeline.en.ts`; a missing translation fails the build. The language switch
+on each page points to its counterpart. Site copy for both languages is in `src/data/site.ts`.
 
 The timeline's current month is computed at build time; the site rebuilds only on push, so a
 planned entry appears once a build runs after its start month.

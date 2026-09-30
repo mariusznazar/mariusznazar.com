@@ -10,11 +10,11 @@
     hostowana na Cloudflare Pages.
   tools: [Astro, Cloudflare Pages]
   access: publiczny
-  link: null         # TODO: adres po uruchomieniu
+  link: https://mariusznazar.com
 
 - id: canvas-ai-managers-3
   track: artefakt
-  start: 2026-06     # TODO: miesiąc oddania
+  start: 2026-06
   end: null
   title: Canvas wdrożenia AI z kursu AI_Managers 3
   org: null
@@ -23,11 +23,11 @@
     Do pokazania po anonimizacji albo w formie opisu.
   tools: []
   access: do-pokazania
-  link: null         # TODO: po anonimizacji
+  link: null
 
 - id: esvelo-artefakty-2021
   track: artefakt
-  start: 2021-06     # TODO: rozdzielić na trzy wpisy, gdy znane będą miesiące
+  start: 2021-06
   end: 2021-11
   title: Newsletter, artykuły i prezentacje o feedbacku
   org: Esvelo
@@ -37,7 +37,7 @@
     da się pokazać. Dwie prezentacje ogólnofirmowe.
   tools: []
   access: do-pokazania
-  link: null         # TODO: gdzie i w jakiej formie opublikować artykuły
+  link: null
   items:
     - title: Newsletter QA
       status: niepubliczny
@@ -48,12 +48,14 @@
 
 - id: framework-e2e-venturedevs
   track: artefakt
-  start: 2019        # TODO: miesiąc
-  end: 2021-06
+  start: 2020-02
+  end: 2020-05
   title: Pierwszy framework do testów E2E w firmie
   org: VentureDevs
-  summary: Framework do automatyzacji testów end-to-end, pierwszy w firmie.   # TODO: technologia, kto z niego korzystał
-  tools: [automatyzacja E2E]
+  summary: >
+    Framework E2E w Pythonie, z użyciem behave do scenariuszy Gherkin.
+    Używany przeze mnie oraz w dwóch innych zespołach.
+  tools: [Python, behave, Gherkin]
   access: niepubliczny
   link: null
 

@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Timeline from './Timeline.astro';
+import { site, type Locale } from '../data/site';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Base title={`Bio — ${site.name}`} description={site.copy[locale].description} locale={locale} page="bio">
+  <h1>Bio</h1>
+  <Timeline locale={locale} />
+</Base>
+
+<style>
+  h1 { padding-top: 56px; font-size: clamp(2rem, 5vw, 3rem); }
+</style>

@@ -15,7 +15,7 @@ const base = {
   org: z.string().nullable().default(null),
   summary: z.string().nullable().default(null),
   tools: z.array(z.string()).default([]),
-  items: z.array(z.object({ title: z.string(), status: z.string().optional() })).optional(),
+  items: z.array(z.object({ title: z.string(), status: z.string().optional(), link: z.string().url().optional() })).optional(),
   /** bar ends in the given month, card prints the year only */
   endApprox: z.boolean().optional(),
 };

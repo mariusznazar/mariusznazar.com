@@ -77,14 +77,21 @@ export function resolveSpans(entries: TimelineEntry[], now: number): Span[] {
   return spans;
 }
 
-/** A closed span ending in the month the next span of the same track starts gets an exclusive end. */
+/** Touching spans get an exclusive end; identical date ranges stay aligned across tracks. */
 export function applyTouching(spans: Span[]): Span[] {
-  return spans.map((a) => {
+  const adjusted = spans.map((a) => {
     if (a.ongoing || a.point) return a;
     const touches = spans.some(
       (b) => b !== a && b.track === a.track && b.startMonth === a.endMonth && b.startMonth > a.startMonth,
     );
     return touches ? { ...a, endMonth: a.endMonth - 1 } : a;
+  });
+  return adjusted.map((a) => {
+    if (a.ongoing || a.point) return a;
+    const matchingEnds = adjusted
+      .filter((b) => !b.ongoing && !b.point && b.startMonth === a.startMonth && b.displayEndMonth === a.displayEndMonth)
+      .map((b) => b.endMonth);
+    return { ...a, endMonth: Math.min(...matchingEnds) };
   });
 }
 
@@ -135,9 +142,9 @@ export function formatMonth(month: number, approx: boolean): string {
   return `${year}-${String((month % 12) + 1).padStart(2, '0')}`;
 }
 
-export function formatRange(span: Span): string {
+export function formatRange(span: Span, locale: 'pl' | 'en' = 'pl'): string {
   const start = formatMonth(span.startMonth, span.approxStart);
-  if (span.ongoing) return `${start} → trwa`;
+  if (span.ongoing) return `${start} → ${locale === 'pl' ? 'trwa' : 'present'}`;
   if (span.point) return start;
   return `${start} → ${formatMonth(span.displayEndMonth, span.approxEnd)}`;
 }
