@@ -19,11 +19,11 @@ order: 1
   - it's harder to clarify the context, add something, or explain yourself;
   - if questions come up, you may spend more time typing than a short conversation would have taken.
 
-<div class="article-media-grid" aria-label="Four ways to talk">
-  <figure><img src="/images/feedback/Why-Should-you-Arrange-a-Face-to-Face-Meeting-with-Sourcing-Agents-in-China-768x480.jpg" alt="Illustration of two people talking at a table" loading="lazy" /><figcaption>In person</figcaption></figure>
-  <figure><img src="/images/feedback/1011.jpg" alt="Illustration of a Zoom call" loading="lazy" /><figcaption>Video</figcaption></figure>
-  <figure><img src="/images/feedback/2edc1c42-a8b7-11ea-83f8-505dac8c385b_03.jpg" alt="Microphone symbol and the words Voice Only" loading="lazy" /><figcaption>Voice</figcaption></figure>
-  <figure><img src="/images/feedback/slack6.png" alt="Illustration of the Slack messenger" loading="lazy" /><figcaption>Text</figcaption></figure>
+<div class="article-media-grid" role="group" aria-label="Four ways to talk">
+  <figure><img src="/images/feedback/Why-Should-you-Arrange-a-Face-to-Face-Meeting-with-Sourcing-Agents-in-China-768x480.jpg" width="768" height="412" alt="Illustration of two people talking at a table" loading="lazy" /><figcaption>In person</figcaption></figure>
+  <figure><img src="/images/feedback/1011.jpg" width="1200" height="650" alt="Illustration of a Zoom call" loading="lazy" /><figcaption>Video</figcaption></figure>
+  <figure><img src="/images/feedback/2edc1c42-a8b7-11ea-83f8-505dac8c385b_03.jpg" width="886" height="477" alt="Microphone symbol and the words Voice Only" loading="lazy" /><figcaption>Voice</figcaption></figure>
+  <figure><img src="/images/feedback/slack6.png" width="2400" height="1256" alt="Illustration of the Slack messenger" loading="lazy" /><figcaption>Text</figcaption></figure>
 </div>
 
 ## 2. Choose the right time, place, and mood
@@ -34,7 +34,7 @@ order: 1
 - What if you're in a meeting and want to give someone feedback right then? It's usually better not to do it in front of everyone. Not everybody is comfortable receiving a public comment, even a positive one.
 - If the other person is clearly busy, in a hurry, or about to finish work, agree on the next convenient moment. That could be in fifteen minutes or the next day. It isn't ideal, but if you give feedback when someone has no time for it, you may simply not be heard.
 
-<figure class="article-figure"><img src="/images/feedback/do-you-have-a-moment-for-feedback.jpg" alt="Meme of Darth Vader asking whether you have a moment for feedback" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/images/feedback/do-you-have-a-moment-for-feedback.jpg" width="1280" height="720" alt="Meme of Darth Vader asking whether you have a moment for feedback" loading="lazy" /></figure>
 
 ### Find the right place
 
@@ -48,7 +48,7 @@ order: 1
 - If they feel unwell, tired, or in a bad mood, you can arrange to talk the next day.
 - The same applies to you. Giving feedback in a bad mood may have the opposite effect to what you intended.
 
-<figure class="article-figure article-figure-wide"><img src="/images/feedback/914.png" alt="Comic about giving even a positive comment at the wrong moment" loading="lazy" /></figure>
+<figure class="article-figure article-figure-wide"><img src="/images/feedback/914.png" width="820" height="700" alt="Comic about giving even a positive comment at the wrong moment" loading="lazy" /></figure>
 
 ## 3. Ask whether they're ready for feedback
 
@@ -56,7 +56,7 @@ Before giving feedback, make sure the other person is ready to listen. You might
 
 > “I'd like to give you some feedback. Can we talk?”
 
-<figure class="article-figure"><img src="/images/feedback/are-you-ready-for-some-more-constructive-feedback.jpg" alt="Meme asking Are you ready for some more constructive feedback?" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/images/feedback/are-you-ready-for-some-more-constructive-feedback.jpg" width="460" height="380" alt="Meme asking Are you ready for some more constructive feedback?" loading="lazy" /></figure>
 
 This lets them know feedback is coming and gives them a moment to prepare. It's easier then to listen deliberately and ask about anything unclear. You can also agree on a better time if now isn't right. That lowers the chance of a misunderstanding.
 
@@ -68,7 +68,7 @@ When giving feedback, try not to judge the other person. Don't just say they did
 
 <aside class="example example-bad" aria-label="Example judging the person"><span class="example-mark" aria-hidden="true">×</span><p>“Yesterday, before refinement, we talked about adding requirements to task XY-555. You're misleading the team and causing unnecessary confusion instead of saying things plainly.”</p></aside>
 
-<figure class="article-figure"><img src="/images/feedback/please-dont-judge-me.jpg" alt="Meme with the words Please don't judge me" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/images/feedback/please-dont-judge-me.jpg" width="400" height="300" alt="Meme with the words Please don't judge me" loading="lazy" /></figure>
 
 ## 5. Paraphrase
 
@@ -102,4 +102,4 @@ Without paraphrasing, the conversation circles around the same objection. It's h
 
 > If you receive feedback, paraphrase it too, to make sure you understood it correctly.
 
-<figure class="article-figure"><img src="/images/feedback/i-am-a-foagfb.jpg" alt="Meme of a frog deliberately paraphrasing its description incorrectly" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/images/feedback/i-am-a-foagfb.jpg" width="600" height="839" alt="Meme of a frog deliberately paraphrasing its description incorrectly" loading="lazy" /></figure>

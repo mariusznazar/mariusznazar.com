@@ -17,7 +17,8 @@ overlap in time — the build fails and names the pair; merge them with `items` 
 Header copy and links are in `src/data/site.ts`. Design notes live in the author's private
 notes vault (spec `2026-09-05-wizytowka-strona-glowna-design.md`), not in this repo.
 
-The site has Polish pages at `/` and `/bio/`, and English pages at `/en/` and `/en/bio/`.
+The site has Polish pages at `/`, `/bio/`, and `/materialy/`, and English pages at
+`/en/`, `/en/bio/`, and `/en/articles/`.
 Both languages share the same timeline dates and links. English entry text is keyed by entry
 ID in `src/data/timeline.en.ts`; a missing translation fails the build. The language switch
 on each page points to its counterpart. Site copy for both languages is in `src/data/site.ts`.

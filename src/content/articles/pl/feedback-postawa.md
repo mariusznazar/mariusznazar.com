@@ -14,7 +14,7 @@ W artykule [Dobre rady na początek](/materialy/feedback-piec-rad-na-poczatek/) 
 
 Kiedy ktoś daje nam feedback, starajmy się go wysłuchać. Nie zakładajmy z góry złych intencji, kiedy ktoś zwraca nam uwagę. Zazwyczaj intencje są dobre, choć z wykonaniem bywa gorzej.
 
-<figure class="article-figure"><img src="/images/feedback/good-intentions.jpg" alt="Mem: co jeśli wszyscy mają dobre intencje, a przeszkadzają nam nieporozumienia?" loading="eager" /></figure>
+<figure class="article-figure"><img src="/images/feedback/good-intentions.jpg" width="551" height="549" alt="Mem: co jeśli wszyscy mają dobre intencje, a przeszkadzają nam nieporozumienia?" loading="eager" /></figure>
 
 Obserwuj swoje reakcje zwłaszcza wtedy, gdy:
 
@@ -27,7 +27,7 @@ Kiedy zauważysz u siebie taką reakcję, zastanów się, czy jest uzasadniona. 
 
 <aside class="article-note"><p>Otwartość na feedback pomaga nam się rozwijać, budować relacje i dbać o dobrą atmosferę. Ostatecznie ułatwia życie nam i innym.</p></aside>
 
-<figure class="article-figure"><img src="/images/feedback/i-want-your-feedback.jpg" alt="Mem z Wujem Samem i napisem I want your feedback" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/images/feedback/i-want-your-feedback.jpg" width="343" height="473" alt="Mem z Wujem Samem i napisem I want your feedback" loading="lazy" /></figure>
 
 ## Zaakceptuj różnorodność
 
@@ -44,15 +44,15 @@ Niezależnie od tego, czy dajemy feedback, czy go przyjmujemy, pamiętajmy, że 
 To, kim jesteśmy, wpływa na to, co mówimy, jak to mówimy i jak odbieramy innych. Warto czasem zatrzymać się i pomyśleć o tych różnicach. Dzięki temu łatwiej zrozumieć drugą osobę.
 
 <div class="article-media-grid article-media-pair" role="group" aria-label="Dwa memy o różnorodności">
-  <figure><img src="/images/feedback/you-seewe-are-not-so-different-you-and-i.jpg" alt="Mem z Voldemortem: nie jesteśmy aż tak różni" loading="lazy" /></figure>
-  <figure><img src="/images/feedback/e1e7k.jpg" alt="Mem: wszyscy jesteśmy różni i to jest piękne" loading="lazy" /></figure>
+  <figure><img src="/images/feedback/you-seewe-are-not-so-different-you-and-i.jpg" width="400" height="400" alt="Mem z Voldemortem: nie jesteśmy aż tak różni" loading="lazy" /></figure>
+  <figure><img src="/images/feedback/e1e7k.jpg" width="380" height="381" alt="Mem: wszyscy jesteśmy różni i to jest piękne" loading="lazy" /></figure>
 </div>
 
 ## Ćwicz empatię: spróbuj zrozumieć perspektywę drugiej osoby
 
 Nie zawsze musimy zgadzać się z feedbackiem. Osoba, która go udziela, może nie wiedzieć o wielu rzeczach, o których my wiemy. Przedstawia jednak swoją perspektywę i ma ku temu powód, nawet jeśli trudno nam go od razu zrozumieć.
 
-<figure class="article-figure"><img src="/images/feedback/what-if-i-told-you-we-can-agree-to-disagree-and-still-be-friends.jpg" alt="Mem: możemy się nie zgadzać i nadal się przyjaźnić" loading="lazy" /></figure>
+<figure class="article-figure"><img src="/images/feedback/what-if-i-told-you-we-can-agree-to-disagree-and-still-be-friends.jpg" width="400" height="400" alt="Mem: możemy się nie zgadzać i nadal się przyjaźnić" loading="lazy" /></figure>
 
 Zobacz, dokąd prowadzi rozmowa, w której obie strony próbują przede wszystkim przekonać drugą do swojej racji:
 
@@ -86,7 +86,7 @@ Błędy popełniamy każdego dnia. Część dostrzegamy sami, o innych dowiaduje
 <p><strong>Programiści?</strong> Uczestniczyli w refinemencie i pisali kod. Mieli okazje, by dostrzec lukę.</p>
 <p><strong>QA?</strong> Brali udział w refinemencie i testowali aplikację. Wykrywanie takich problemów należy do ich pracy.</p></aside>
 
-<figure class="article-figure article-figure-wide"><img src="/images/feedback/f63ed4353608ac2c6080fdafedd60865.png" alt="Mem z małpką rozglądającą się na boki" loading="lazy" /></figure>
+<figure class="article-figure article-figure-wide"><img src="/images/feedback/f63ed4353608ac2c6080fdafedd60865.png" width="1210" height="800" alt="Mem z małpką rozglądającą się na boki" loading="lazy" /></figure>
 
 Nie ma sensu szukać odpowiedzi na tak postawione pytanie, bo każda z tych osób mogła zapobiec problemowi. Kiedy znajdziemy się w podobnej sytuacji, proponuję przejść przez trzy kroki:
 
