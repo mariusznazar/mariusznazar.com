@@ -86,4 +86,8 @@ const { Content } = await render(entry);
     .article-content :global(.article-media-pair) { grid-template-columns: 1fr; }
     .article-content :global(.article-media-pair figure) { width: min(100%, 320px); margin-inline: auto; }
   }
+  @media (max-width: 420px) {
+    .article-content :global(.article-media-grid) { grid-template-columns: 1fr; }
+    .article-content :global(.article-media-grid img) { height: auto; max-height: 320px; }
+  }
 </style>
