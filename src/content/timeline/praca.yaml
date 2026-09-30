@@ -1,0 +1,120 @@
+- id: vox-qa-lead
+  track: praca
+  start: 2021-12
+  end: null
+  title: QA Lead
+  org: VOX Capital Group
+  summary: >
+    Jakość sklepu internetowego i systemów wokół niego: wewnętrznej platformy
+    sprzedażowej, CMS i aplikacji do projektowania wnętrz. Analiza logów
+    w poszukiwaniu wzorców i anomalii, doprecyzowywanie wymagań z interesariuszami
+    po stronie Product Ownerów, przepływy pracy w Jira, wdrożenie Scruma w dwóch
+    zespołach, testy wydajnościowe sklepu.
+  tools: [analiza logów, Jira, Scrum, Locust, testy manualne]
+
+- id: esvelo-head-of-qa
+  track: praca
+  start: 2021-06
+  end: 2021-11
+  title: Head of Quality Assurance
+  org: Esvelo
+  summary: >
+    Zespół dziesięciu QA rozproszonych po zespołach produktowych, dziewięcioro
+    z nich zatrudnionych i wdrożonych w pół roku. Analiza wynagrodzeń QA, po której
+    firma zmieniła widełki płacowe; OKR-y działu, ewaluacja i cele indywidualne,
+    newsletter QA, warsztat ról i odpowiedzialności.
+  tools: [rekrutacja, onboarding, OKR, analiza wynagrodzeń, moderowanie spotkań]
+
+- id: venturedevs-qa-lead
+  track: praca
+  start: 2019-01
+  end: 2021-06
+  title: QA Lead
+  org: VentureDevs
+  summary: >
+    Pierwszy w firmie framework do testów E2E, wewnętrzne warsztaty
+    z automatyzacji, rekrutacja techniczna QA. Moderowanie retrospektyw,
+    refinementów, review i dem, także z klientami.
+  tools: [automatyzacja E2E, warsztaty wewnętrzne, rekrutacja techniczna, facylitacja spotkań]
+
+- id: venturedevs-qa-specialist
+  track: praca
+  start: 2018-07
+  end: 2018-12
+  title: QA Specialist
+  org: VentureDevs
+  summary: >
+    Plany testów, testy eksploracyjne i ad hoc aplikacji webowych (PWA) na różnych
+    systemach i urządzeniach; automatyzacja testów w Pythonie z behave.
+    Raportowanie i odtwarzanie błędów, ocena ryzyka, estymacja, praca
+    z wymaganiami biznesowymi i technicznymi.
+  tools: [testy eksploracyjne, PWA, Python, behave, ocena ryzyka]
+
+- id: pag-projektowo-kosztorysowy
+  track: praca
+  start: 2016-12
+  end: 2018-06
+  title: Specjalista ds. projektowo-kosztorysowych
+  org: PAG
+  summary: >
+    Wsparcie projektantów i kierowników budowy: rysunki techniczne, dokumentacja
+    projektowa, oferty i kosztorysy.
+  tools: [rysunki techniczne, dokumentacja projektowa, kosztorysowanie, ofertowanie]
+
+- id: deon-inzynier-budowy
+  track: praca
+  start: 2014-12
+  end: 2016-12
+  title: Asystent projektanta / inżynier budowy
+  org: Deon
+  summary: >
+    Kilkadziesiąt samodzielnie przygotowanych projektów wykonawczych
+    i powykonawczych podłączeń bloków mieszkalnych do sieci światłowodowej FTTH
+    w Lublinie, Radomiu i Rzeszowie. Koordynacja prac projektowych i wdrożenie
+    pięciu nowych osób do biura.
+  tools: [projekty wykonawcze, projekty powykonawcze, FTTH, koordynacja prac, onboarding]
+
+- id: pwmerpol-inzynier-budowy
+  track: praca
+  start: 2014-06
+  end: 2014-12
+  title: Asystent projektanta / inżynier budowy
+  org: PWMerpol
+  summary: >
+    Koordynacja prac na podstawie wymagań kontraktu, dokumentacji technicznej
+    i harmonogramów. Wsparcie projektanta i kierownika budowy: rysunki
+    techniczne, ofertowanie.
+  tools: [dokumentacja techniczna, harmonogramy, rysunki techniczne, ofertowanie]
+
+- id: lubella-elektryk
+  track: praca
+  start: 2013-10
+  end: 2013-12
+  title: Elektryk
+  org: Lubella
+  summary: >
+    Utrzymanie ruchu w zakładzie produkcyjnym: usuwanie usterek, konserwacja
+    urządzeń, diagnostyka awarii ze schematów elektrycznych i programów PLC.
+  tools: [utrzymanie ruchu, schematy elektryczne, PLC, diagnostyka awarii]
+
+- id: mw-lublin-asystent-automatyka
+  track: praca
+  start: 2013-07
+  end: 2013-09
+  title: Asystent automatyka
+  org: MW Lublin
+  summary: >
+    Utrzymanie ruchu: analiza schematów elektrycznych i PLC, pomoc w naprawach
+    i diagnostyce awarii.
+  tools: [utrzymanie ruchu, schematy elektryczne, PLC]
+
+- id: altest-asystent-projektanta
+  track: praca
+  start: 2011-07
+  end: 2011-12
+  title: Asystent projektanta
+  org: Altest
+  summary: >
+    Podkłady architektoniczne, kosztorysy, przedmiary i zestawienia magazynowe
+    w biurze projektowym.
+  tools: [podkłady architektoniczne, kosztorysy, przedmiary]

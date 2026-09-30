@@ -1,0 +1,227 @@
+---
+import { getCollection } from 'astro:content';
+import TimelineCard, { type CardView } from './TimelineCard.astro';
+import { timelineEn } from '../data/timeline.en';
+import type { Locale } from '../data/site';
+import {
+  applyTouching, buildGrid, currentMonth, findOverlaps, formatRange, resolveSpans, rowOf,
+  type Span, type TimelineEntry, type Track,
+} from '../lib/timeline';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const COLUMN: Record<Track, number> = { praca: 2, artefakt: 3, edukacja: 4 };
+const ui = locale === 'pl'
+  ? { timeline: 'Oś czasu', year: 'rok', switchLabel: 'Tor osi czasu', tracks: { praca: 'Praca', artefakt: 'Artefakty', edukacja: 'Edukacja' }, certificate: 'certyfikat', view: 'zobacz' }
+  : { timeline: 'Timeline', year: 'year', switchLabel: 'Timeline track', tracks: { praca: 'Work', artefakt: 'Work samples', edukacja: 'Education' }, certificate: 'certificate', view: 'view' };
+const TRACKS: Array<{ track: Track; label: string }> = [
+  { track: 'praca', label: ui.tracks.praca },
+  { track: 'artefakt', label: ui.tracks.artefakt },
+  { track: 'edukacja', label: ui.tracks.edukacja },
+];
+const statusEn: Record<string, string> = {
+  'ukończony': 'completed',
+  'bez zaliczenia': 'not completed',
+  'planowany': 'planned',
+  'niepubliczny': 'not public',
+  'do pokazania': 'to be shared',
+};
+const accessEn = { publiczny: 'public', 'do-pokazania': 'to be shared', niepubliczny: 'not public' };
+function itemStatus(value: string): string {
+  if (locale === 'pl') return value;
+  const translation = statusEn[value];
+  if (!translation) throw new Error(`Missing English translation for timeline status "${value}"`);
+  return translation;
+}
+
+const work = await getCollection('work');
+const artefacts = await getCollection('artefacts');
+const education = await getCollection('education');
+
+type AnyEntry = (typeof work)[number] | (typeof artefacts)[number] | (typeof education)[number];
+const all: AnyEntry[] = [...work, ...artefacts, ...education];
+const byId = new Map<string, AnyEntry>();
+for (const e of all) {
+  if (byId.has(e.id)) throw new Error(`Duplicate timeline entry id "${e.id}"`);
+  byId.set(e.id, e);
+}
+if (locale === 'en') {
+  const missing = all.filter((e) => !timelineEn[e.id]).map((e) => e.id);
+  const unused = Object.keys(timelineEn).filter((id) => !byId.has(id));
+  const itemMismatches = all
+    .filter((e) => (e.data.items?.length ?? 0) !== (timelineEn[e.id]?.itemTitles?.length ?? 0))
+    .map((e) => e.id);
+  if (missing.length || unused.length || itemMismatches.length) {
+    throw new Error(`English timeline translations: missing [${missing}], unused [${unused}], item mismatches [${itemMismatches}]`);
+  }
+}
+
+const entries: TimelineEntry[] = all.map((e) => ({
+  id: e.id,
+  track: e.data.track,
+  start: e.data.start,
+  end: e.data.end,
+  ongoing: 'ongoing' in e.data ? e.data.ongoing : undefined,
+  endApprox: e.data.endApprox,
+}));
+
+const now = currentMonth();
+const spans = applyTouching(resolveSpans(entries, now));
+const overlaps = findOverlaps(spans);
+if (overlaps.length > 0) {
+  throw new Error(
+    'Timeline entries overlap in the same track: ' +
+      overlaps.map(([a, b]) => `${a} × ${b}`).join(', ') +
+      '. Merge them with `items` or fix the dates.',
+  );
+}
+const grid = buildGrid(spans, now);
+
+function toCard(span: Span): CardView {
+  const e = byId.get(span.id)!;
+  const d = e.data;
+  const translated = locale === 'en' ? timelineEn[span.id]! : null;
+  let badge: CardView['badge'] = null;
+  let link: CardView['link'] = null;
+  if (d.track === 'edukacja') {
+    if (d.status) badge = { text: itemStatus(d.status), accent: d.status === 'ukończony' };
+    if (d.link) link = { href: d.link, label: ui.certificate };
+  } else if (d.track === 'artefakt') {
+    badge = { text: locale === 'pl' ? d.access.replace('-', ' ') : accessEn[d.access], accent: d.access === 'publiczny' };
+    if (d.link) link = { href: d.link, label: ui.view };
+  }
+  return {
+    id: span.id,
+    title: translated?.title ?? d.title,
+    org: translated?.org ?? d.org,
+    dateText: formatRange(span, locale),
+    approx: span.approxStart || span.approxEnd,
+    summary: translated ? translated.summary : d.summary,
+    tools: translated?.tools ?? d.tools,
+    items: (d.items ?? []).map((item, index) => ({
+      title: translated ? translated.itemTitles![index]! : item.title,
+      status: item.status ? itemStatus(item.status) : undefined,
+      link: item.link,
+    })),
+    badge,
+    link,
+  };
+}
+
+const placed = spans.map((span) => ({
+  span,
+  card: toCard(span),
+  column: COLUMN[span.track],
+  rowStart: rowOf(span.endMonth, grid.top) + 1, // +1: row 1 of the CSS grid is the header
+  rowEnd: rowOf(span.startMonth, grid.top) + 2,
+  current: span.ongoing,
+}));
+---
+
+<section class="timeline-section">
+  <h2 class="label">{ui.timeline}</h2>
+
+  <div class="timeline-wrap">
+    {TRACKS.map(({ track }, i) => (
+      <input type="radio" name="track" id={`track-${track}`} class="track-radio visually-hidden" checked={i === 0} />
+    ))}
+    <div class="track-switch mono" role="group" aria-label={ui.switchLabel}>
+      {TRACKS.map(({ track, label }) => <label for={`track-${track}`}>{label}</label>)}
+    </div>
+
+    <div class="timeline" style={`--rows: ${grid.rowCount}`}>
+      <div class="head head-year mono">{ui.year}</div>
+      {TRACKS.map(({ track, label }) => (
+        <div class="head label" data-track={track} style={`--col: ${COLUMN[track]}`}>{label}</div>
+      ))}
+
+      {grid.years.map((y) => (
+        <>
+          <div class="year-line" style={`--row: ${y.row + 1}`}></div>
+          <div class="year mono" style={`--row: ${y.row + 1}`}>{y.year}</div>
+        </>
+      ))}
+
+      {placed.map((p) => (
+        <>
+          <div
+            class:list={['bar', { current: p.current, open: p.span.ongoing }]}
+            data-track={p.span.track}
+            style={`--col: ${p.column}; --row-start: ${p.rowStart}; --row-end: ${p.rowEnd}`}
+          ></div>
+          <div
+            class="head-cell"
+            data-track={p.span.track}
+            style={`--col: ${p.column}; --row-start: ${p.rowStart}; --row-end: ${p.rowStart + 1}`}
+          >
+            <TimelineCard card={p.card} locale={locale} />
+          </div>
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-section { margin-top: 24px; }
+  .timeline-section > .label { margin-bottom: 12px; }
+
+  .timeline {
+    display: grid;
+    grid-template-columns: 56px 1fr 1fr 1fr;
+    grid-template-rows: auto repeat(var(--rows), minmax(var(--month), auto));
+    column-gap: 14px;
+  }
+
+  .head { grid-row: 1; padding-bottom: 8px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .head-year { grid-column: 1; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim); }
+  .head[data-track] { grid-column: var(--col); }
+
+  .year-line { grid-column: 1 / -1; grid-row: var(--row); border-top: 1px solid var(--line-soft); z-index: 0; }
+  .year { grid-column: 1; grid-row: var(--row); align-self: start; padding-top: 3px; font-size: 0.8rem; color: var(--fg-muted); z-index: 3; }
+
+  .bar {
+    grid-column: var(--col); grid-row: var(--row-start) / var(--row-end);
+    background: var(--bg-card); border: 1px solid var(--line); border-left: 3px solid var(--fg-dim);
+    border-radius: 3px; margin-bottom: 2px; z-index: 1;
+  }
+  .bar.current { border-left-color: var(--accent); }
+  .bar.open { border-top: 1px dashed var(--accent); border-top-left-radius: 0; border-top-right-radius: 0; }
+
+  .head-cell { grid-column: var(--col); grid-row: var(--row-start) / var(--row-end); min-width: 0; z-index: 2; }
+
+  .track-switch { display: none; }
+  .track-radio { display: none; }
+
+  @media (max-width: 719px) {
+    .track-radio {
+      display: block; position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    .track-switch {
+      display: flex; gap: 8px; margin-bottom: 14px; font-size: 0.8rem;
+    }
+    .track-switch label {
+      padding: 6px 12px; border: 1px solid var(--line); border-radius: 3px; color: var(--fg-muted); cursor: pointer;
+    }
+    #track-praca:focus-visible ~ .track-switch label[for="track-praca"],
+    #track-artefakt:focus-visible ~ .track-switch label[for="track-artefakt"],
+    #track-edukacja:focus-visible ~ .track-switch label[for="track-edukacja"] {
+      outline: 1px dotted var(--fg-dim); outline-offset: 2px;
+    }
+
+    .timeline { grid-template-columns: 48px 1fr; }
+    .timeline [data-track] { grid-column: 2; display: none; }
+
+    #track-praca:checked ~ .timeline [data-track="praca"],
+    #track-artefakt:checked ~ .timeline [data-track="artefakt"],
+    #track-edukacja:checked ~ .timeline [data-track="edukacja"] { display: block; }
+
+    #track-praca:checked ~ .track-switch label[for="track-praca"],
+    #track-artefakt:checked ~ .track-switch label[for="track-artefakt"],
+    #track-edukacja:checked ~ .track-switch label[for="track-edukacja"] {
+      color: var(--fg); border-color: var(--accent);
+    }
+  }
+</style>

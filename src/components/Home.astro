@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import portrait from '../assets/mariusz-nazar-2026.png';
+import { pagePath, site, type Locale } from '../data/site';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const copy = site.copy[locale];
+const links = [
+  { label: 'Bio', href: pagePath(locale, 'bio') },
+  { label: 'GitHub', href: 'https://github.com/mariusznazar' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mariusz-nazar-100/' },
+  { label: copy.email, href: 'mailto:mariusznn@gmail.com' },
+];
+---
+
+<Base title={site.name} description={copy.description} locale={locale} page="home">
+  <section class="hero">
+    <div class="hero-heading">
+      <h1 class="hero-name">{site.name}</h1>
+      <p class="hero-tagline mono">{copy.tagline}</p>
+    </div>
+    <Image
+      class="hero-portrait"
+      src={portrait}
+      alt={copy.portraitAlt}
+      width={600}
+      format="webp"
+      loading="eager"
+    />
+    <div class="hero-body">
+      {copy.intro.map((paragraph) => <p class="hero-intro">{paragraph}</p>)}
+      <p class="hero-links mono">
+        {links.map((link) => <a href={link.href}>{link.label}</a>)}
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.25fr);
+    grid-template-areas: 'portrait heading' 'portrait body';
+    column-gap: clamp(36px, 6vw, 96px);
+    row-gap: 24px;
+    padding: clamp(48px, 8vw, 96px) 0 40px;
+    align-items: center;
+  }
+  .hero-heading { grid-area: heading; align-self: end; }
+  .hero-name { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 18px; }
+  .hero-tagline { color: var(--accent); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+  .hero-portrait { grid-area: portrait; display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+  .hero-body { grid-area: body; align-self: start; }
+  .hero-intro { max-width: 50ch; font-size: 1.05rem; margin: 0 0 14px; }
+  .hero-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.85rem; margin: 24px 0 0; }
+
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: 'heading' 'portrait' 'body';
+      row-gap: 28px;
+      padding-top: 48px;
+    }
+    .hero-name { margin-bottom: 12px; }
+    .hero-portrait { max-width: 320px; justify-self: center; }
+  }
+</style>
