@@ -56,21 +56,21 @@ const links = [
     display: grid;
     max-width: 1080px;
     margin-inline: auto;
-    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-columns: 260px minmax(0, 1fr);
     grid-template-areas: 'portrait heading' 'portrait body';
     column-gap: clamp(32px, 5vw, 72px);
     row-gap: 18px;
-    padding: clamp(40px, 6vw, 72px) 0 12px;
+    padding: clamp(36px, 4vw, 54px) 0 12px;
     align-items: center;
   }
   .hero-heading { grid-area: heading; align-self: end; }
   .hero-name { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 18px; }
   .hero-tagline { color: var(--accent); font-size: 0.9rem; line-height: 1.6; margin: 0; }
-  .hero-portrait { grid-area: portrait; display: block; width: 100%; max-width: 300px; height: auto; border: 1px solid var(--line); }
+  .hero-portrait { grid-area: portrait; display: block; width: 100%; max-width: 260px; height: auto; border: 1px solid var(--line); }
   .hero-body { grid-area: body; align-self: start; }
   .hero-intro { max-width: 50ch; font-size: 1.05rem; margin: 0 0 14px; }
   .hero-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.85rem; margin: 24px 0 0; }
-  .home-materials { max-width: 860px; margin: clamp(24px, 4vw, 56px) auto 0; }
+  .home-materials { max-width: 860px; margin: clamp(20px, 3vw, 40px) auto 0; }
   .home-materials-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 16px; }
   .home-materials-heading h2 { font-size: clamp(1.5rem, 2.5vw, 1.9rem); }
   .home-materials-heading a { font-size: .78rem; }
