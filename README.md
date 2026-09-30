@@ -22,6 +22,13 @@ Both languages share the same timeline dates and links. English entry text is ke
 ID in `src/data/timeline.en.ts`; a missing translation fails the build. The language switch
 on each page points to its counterpart. Site copy for both languages is in `src/data/site.ts`.
 
+Articles live as paired Markdown files in `src/content/articles/pl/` and
+`src/content/articles/en/`. Their frontmatter shares a `key` between languages and
+sets a localized title, summary, topic, and display order. Higher order values
+appear first. The build requires a translation for every article. Polish articles
+appear under `/materialy/`; English articles under `/en/articles/`. Each language
+switch points to the matching article.
+
 The timeline's current month is computed at build time; the site rebuilds only on push, so a
 planned entry appears once a build runs after its start month.
 

@@ -1,0 +1,33 @@
+---
+import type { ArticleEntry } from '../data/articles';
+import { articleSlug } from '../data/articles';
+import { articlePath, type Locale } from '../data/site';
+
+interface Props { locale: Locale; entries: ArticleEntry[] }
+const { locale, entries } = Astro.props;
+---
+
+<div class="article-list">
+  {entries.map((entry) => (
+    <article class="article-item">
+      <a class="article-link" href={articlePath(locale, articleSlug(entry))}>
+        <span class="article-topic label">{entry.data.topic}</span>
+        <span class="article-title-row"><h2>{entry.data.title}</h2><span class="article-arrow mono" aria-hidden="true">↗</span></span>
+        <span class="article-summary">{entry.data.summary}</span>
+      </a>
+    </article>
+  ))}
+</div>
+
+<style>
+  .article-list { border-top: 1px solid var(--line); }
+  .article-item { border-bottom: 1px solid var(--line); }
+  .article-link { display: block; padding: 24px 0 28px; border: 0; color: var(--fg); }
+  .article-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .article-topic { display: block; margin-bottom: 8px; }
+  .article-title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
+  h2 { font-size: clamp(1.45rem, 3vw, 2rem); line-height: 1.2; }
+  .article-arrow { color: var(--accent); font-size: 1.1rem; }
+  .article-summary { display: block; max-width: 60ch; margin-top: 10px; color: var(--fg-muted); }
+  .article-link:hover h2 { color: var(--accent); }
+</style>

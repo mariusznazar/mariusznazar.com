@@ -1,0 +1,89 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { articleSlug, type ArticleEntry } from '../data/articles';
+import { articlePath, pagePath, site } from '../data/site';
+
+interface Props { entry: ArticleEntry; counterpart: ArticleEntry }
+const { entry, counterpart } = Astro.props;
+const { locale } = entry.data;
+const copy = site.copy[locale];
+const otherLocale = locale === 'pl' ? 'en' : 'pl';
+const { Content } = await render(entry);
+---
+
+<Base
+  title={`${entry.data.title} — ${site.name}`}
+  description={entry.data.description}
+  locale={locale}
+  page="materials"
+  path={articlePath(locale, articleSlug(entry))}
+  alternatePath={articlePath(otherLocale, articleSlug(counterpart))}
+>
+  <article class="article">
+    <header class="article-header">
+      <a class="article-back mono" href={pagePath(locale, 'materials')}>← {copy.backToMaterials}</a>
+      <p class="article-topic label">{entry.data.topic}</p>
+      <h1>{entry.data.title}</h1>
+      <p class="article-lead">{entry.data.summary}</p>
+    </header>
+    <div class="article-content"><Content /></div>
+    <footer class="article-footer">
+      <a class="mono" href={pagePath(locale, 'materials')}>← {copy.backToMaterials}</a>
+    </footer>
+  </article>
+</Base>
+
+<style>
+  .article { padding-top: clamp(48px, 6vw, 72px); }
+  .article-header, .article-content, .article-footer { max-width: 72ch; margin-left: auto; margin-right: auto; }
+  .article-back { font-size: .78rem; }
+  .article-topic { margin: 30px 0 8px; }
+  h1 { font-size: clamp(1.8rem, 3vw, 2.65rem); line-height: 1.12; }
+  .article-lead { max-width: 60ch; margin: 14px 0 32px; color: var(--fg-muted); font-size: clamp(1.05rem, 1.7vw, 1.2rem); line-height: 1.5; }
+  .article-content { border-top: 1px solid var(--line); font-size: 1.04rem; line-height: 1.75; }
+  .article-content :global(h2) { margin: 48px 0 22px; color: var(--accent); font-size: clamp(1.4rem, 2.3vw, 1.7rem); line-height: 1.3; }
+  .article-content :global(h2:first-child) { margin-top: 30px; }
+  .article-content :global(h3) { margin: 38px 0 16px; font-size: 1.2rem; line-height: 1.3; }
+  .article-content :global(p) { margin: 0 0 20px; }
+  .article-content :global(ul), .article-content :global(ol) { padding-left: 1.5em; margin: 0 0 24px; }
+  .article-content :global(li) { padding-left: .25em; margin: 0 0 10px; }
+  .article-content :global(li::marker) { color: var(--accent); }
+  .article-content :global(blockquote) { margin: 32px 0; padding: 4px 0 4px 22px; border-left: 2px solid var(--accent); color: var(--fg-muted); }
+  .article-content :global(blockquote p:last-child) { margin-bottom: 0; }
+  .article-content :global(strong) { font-weight: 600; color: var(--fg); }
+  .article-content :global(hr) { margin: 48px 0; border: 0; border-top: 1px solid var(--line); }
+  .article-content :global(img) { display: block; max-width: 100%; height: auto; }
+  .article-content :global(.article-media-grid) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 32px 0 48px; }
+  .article-content :global(.article-media-grid figure) { min-width: 0; margin: 0; border: 1px solid var(--line); background: var(--bg-card); }
+  .article-content :global(.article-media-grid img) { width: 100%; height: 190px; object-fit: contain; }
+  .article-content :global(.article-media-grid figcaption) { padding: 9px 12px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: .72rem; color: var(--fg-muted); }
+  .article-content :global(.article-media-pair img) { height: auto; aspect-ratio: 1; }
+  .article-content :global(.article-figure) { width: fit-content; max-width: min(100%, 480px); margin: 32px auto 44px; }
+  .article-content :global(.article-figure-wide) { max-width: min(100%, 600px); }
+  .article-content :global(.article-figure img) { border: 1px solid var(--line); }
+  .article-content :global(.article-note) { margin: 24px 0; padding: 18px 22px; border-left: 3px solid #72a6c4; border-radius: 3px; background: #1c2a33; }
+  .article-content :global(.article-note p:last-child) { margin-bottom: 0; }
+  .article-content :global(.example) { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 12px; margin: 20px 0; padding: 20px 22px; border: 1px solid; border-radius: 3px; }
+  .article-content :global(.example-good) { background: #1a2921; border-color: #355443; }
+  .article-content :global(.example-bad) { background: #2c1c1a; border-color: #553a35; }
+  .article-content :global(.example-mark) { font-family: var(--font-mono); font-size: 1.15rem; font-weight: 700; }
+  .article-content :global(.example-good .example-mark) { color: #81bf92; }
+  .article-content :global(.example-bad .example-mark) { color: #df877c; }
+  .article-content :global(.example p) { margin: 0; }
+  .article-content :global(.example p + p) { margin-top: 12px; }
+  .article-footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); font-size: .78rem; }
+  @media (max-width: 720px) {
+    .article { padding-top: 48px; }
+    .article-topic { margin-top: 28px; }
+    .article-lead { margin-bottom: 28px; }
+    .article-content { font-size: 1rem; }
+    .article-content :global(.article-media-grid) { gap: 8px; }
+    .article-content :global(.article-media-grid img) { height: 130px; }
+    .article-content :global(.example) { padding: 16px; gap: 8px; }
+  }
+  @media (max-width: 540px) {
+    .article-content :global(.article-media-pair) { grid-template-columns: 1fr; }
+    .article-content :global(.article-media-pair figure) { width: min(100%, 320px); margin-inline: auto; }
+  }
+</style>

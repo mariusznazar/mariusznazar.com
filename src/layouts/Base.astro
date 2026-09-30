@@ -14,12 +14,17 @@ interface Props {
   description: string;
   locale: Locale;
   page: Page;
+  path?: string;
+  alternatePath?: string;
 }
-const { title, description, locale, page } = Astro.props;
+const { title, description, locale, page, path, alternatePath } = Astro.props;
 const copy = site.copy[locale];
-const currentPath = pagePath(locale, page);
+const currentPath = path ?? pagePath(locale, page);
 const otherLocale: Locale = locale === 'pl' ? 'en' : 'pl';
-const otherPath = pagePath(otherLocale, page);
+const otherPath = alternatePath ?? pagePath(otherLocale, page);
+const localizedPaths = locale === 'pl'
+  ? { pl: currentPath, en: otherPath }
+  : { pl: otherPath, en: currentPath };
 ---
 
 <html lang={locale}>
@@ -29,25 +34,27 @@ const otherPath = pagePath(otherLocale, page);
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={new URL(currentPath, Astro.site)} />
-    <link rel="alternate" hreflang="pl" href={new URL(pagePath('pl', page), Astro.site)} />
-    <link rel="alternate" hreflang="en" href={new URL(pagePath('en', page), Astro.site)} />
-    <link rel="alternate" hreflang="x-default" href={new URL(pagePath('pl', page), Astro.site)} />
+    <link rel="alternate" hreflang="pl" href={new URL(localizedPaths.pl, Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL(localizedPaths.en, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localizedPaths.pl, Astro.site)} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
     <ClientRouter fallback="swap" />
   </head>
   <body>
-    <header class="topbar container" transition:persist="site-header" transition:animate="none">
-      <a class="topbar-name" href={pagePath(locale, 'home')}>{site.name}</a>
-      <span class="topbar-note mono">{copy.comingSoon}</span>
+    <header class="topbar container" transition:animate="none">
+      <a class="topbar-name" href={pagePath(locale, 'home')} transition:persist="site-name">{site.name}</a>
+      <div class="topbar-actions">
+        <a class="topbar-materials mono" href={pagePath(locale, 'materials')} aria-current={currentPath === pagePath(locale, 'materials') ? 'page' : undefined}>{copy.materials}</a>
+        <nav class="language-switch mono" aria-label={locale === 'pl' ? 'Język strony' : 'Page language'}>
+          <span aria-current="page">{locale.toUpperCase()}</span>
+          <span aria-hidden="true">/</span>
+          <a href={otherPath} hreflang={otherLocale} lang={otherLocale} data-astro-reload>{otherLocale.toUpperCase()}</a>
+        </nav>
+      </div>
     </header>
     <main class="container">
-      <nav class="language-switch mono" aria-label={locale === 'pl' ? 'Język strony' : 'Page language'}>
-        <span aria-current="page">{locale.toUpperCase()}</span>
-        <span aria-hidden="true">/</span>
-        <a href={otherPath} hreflang={otherLocale} lang={otherLocale} data-astro-reload>{otherLocale.toUpperCase()}</a>
-      </nav>
       <slot />
     </main>
     <footer class="footer container">
@@ -58,19 +65,20 @@ const otherPath = pagePath(otherLocale, page);
 
 <style>
   .topbar {
-    display: flex; justify-content: space-between; align-items: baseline;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
     padding-top: 20px; padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
   }
   .topbar-name { font-family: var(--font-display); font-weight: 500; color: var(--fg); border: 0; }
-  .topbar-note { font-size: 0.75rem; color: var(--fg-dim); }
-  main { position: relative; }
+  .topbar-actions { display: flex; align-items: baseline; gap: clamp(16px, 3vw, 32px); }
+  .topbar-materials { font-size: 0.75rem; color: var(--fg-muted); }
+  .topbar-materials[aria-current] { color: var(--accent); }
   .language-switch {
-    position: absolute; top: 16px; right: var(--gutter);
     display: flex; gap: 6px; align-items: baseline;
     font-size: 0.75rem; color: var(--fg-dim);
   }
   .language-switch [aria-current] { color: var(--fg); }
+  @media (max-width: 480px) { .topbar-actions { gap: 12px; } }
   .footer {
     margin-top: 64px; padding-top: 16px; padding-bottom: 32px;
     border-top: 1px solid var(--line);

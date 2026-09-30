@@ -1,5 +1,5 @@
 import { defineCollection, z } from 'astro:content';
-import { file } from 'astro/loaders';
+import { file, glob } from 'astro/loaders';
 
 /** YAML reads a bare year (2020) as a number; normalize to string and validate YYYY or YYYY-MM. */
 const yearMonth = z.preprocess(
@@ -42,6 +42,18 @@ export const collections = {
       track: z.literal('edukacja'),
       status: z.enum(['ukończony', 'bez zaliczenia', 'planowany']).optional(),
       link: z.string().url().nullable().optional(),
+    }),
+  }),
+  articles: defineCollection({
+    loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
+    schema: z.object({
+      locale: z.enum(['pl', 'en']),
+      key: z.string().regex(/^[a-z0-9-]+$/),
+      title: z.string(),
+      description: z.string(),
+      summary: z.string(),
+      topic: z.string(),
+      order: z.number().int().nonnegative(),
     }),
   }),
 };

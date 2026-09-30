@@ -1,9 +1,17 @@
 export type Locale = 'pl' | 'en';
-export type Page = 'home' | 'bio';
+export type Page = 'home' | 'bio' | 'materials';
 
 export function pagePath(locale: Locale, page: Page): string {
-  if (locale === 'pl') return page === 'home' ? '/' : '/bio/';
-  return page === 'home' ? '/en/' : '/en/bio/';
+  if (locale === 'pl') {
+    if (page === 'home') return '/';
+    return page === 'bio' ? '/bio/' : '/materialy/';
+  }
+  if (page === 'home') return '/en/';
+  return page === 'bio' ? '/en/bio/' : '/en/articles/';
+}
+
+export function articlePath(locale: Locale, slug: string): string {
+  return `${pagePath(locale, 'materials')}${slug}/`;
 }
 
 export const site = {
@@ -17,7 +25,10 @@ export const site = {
       ],
       description: 'Mariusz Nazar: QA Lead. Testowanie, procesy zespołów, warsztat pracy z agentami AI.',
       portraitAlt: 'Portret Mariusza Nazara',
-      comingSoon: 'materiały wkrótce',
+      materials: 'Materiały',
+      materialsIntro: 'Teksty i przykłady z mojej pracy.',
+      viewAllMaterials: 'Zobacz wszystkie materiały',
+      backToMaterials: 'Wszystkie materiały',
       sourceCode: 'kod tej strony',
       email: 'e-mail',
     },
@@ -28,7 +39,10 @@ export const site = {
       ],
       description: 'Mariusz Nazar: QA Lead. Software testing, team processes, and working with AI agents.',
       portraitAlt: 'Portrait of Mariusz Nazar',
-      comingSoon: 'more to come',
+      materials: 'Articles',
+      materialsIntro: 'Writing and examples from my work.',
+      viewAllMaterials: 'See all articles',
+      backToMaterials: 'All articles',
       sourceCode: 'source code',
       email: 'email',
     },
