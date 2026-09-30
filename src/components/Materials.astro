@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import ArticleList from './ArticleList.astro';
+import { articlesFor } from '../data/articles';
+import { site, type Locale } from '../data/site';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const copy = site.copy[locale];
+const entries = await articlesFor(locale);
+---
+
+<Base title={`${copy.materials} — ${site.name}`} description={copy.materialsIntro} locale={locale} page="materials">
+  <section class="materials">
+    <header>
+      <h1>{copy.materials}</h1>
+      <p>{copy.materialsIntro}</p>
+    </header>
+    <ArticleList locale={locale} entries={entries} />
+  </section>
+</Base>
+
+<style>
+  .materials { max-width: 860px; margin-inline: auto; padding-top: clamp(32px, 4vw, 48px); }
+  header { margin-bottom: 20px; }
+  h1 { font-size: clamp(1.8rem, 3vw, 2.25rem); line-height: 1.15; }
+  header p { max-width: var(--measure); margin: 6px 0 0; color: var(--fg-muted); font-size: .95rem; }
+</style>

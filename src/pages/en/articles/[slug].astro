@@ -1,0 +1,12 @@
+---
+import Article from '../../../components/Article.astro';
+import { articleRoutes } from '../../../data/articles';
+
+export async function getStaticPaths() {
+  return articleRoutes('en');
+}
+
+const { entry, counterpart } = Astro.props;
+---
+
+<Article entry={entry} counterpart={counterpart} />
