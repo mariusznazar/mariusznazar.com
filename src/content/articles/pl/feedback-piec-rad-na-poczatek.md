@@ -8,16 +8,16 @@ topic: Feedback
 order: 1
 ---
 
-## 1. Spotkaj się twarzą w twarz
+## 1. Spotkaj się face to face
 
-- **Na żywo** — to najlepszy sposób, bo widzicie także swoje reakcje i gesty. Dzięki temu łatwiej się porozumieć i szybko wyjaśnić nieścisłości.
-- **Przez wideo** — jeśli pracujecie zdalnie, spotkanie w cztery oczy nie zawsze jest możliwe. Rozmowa wideo jest dobrą alternatywą. Jeśli możesz, włącz kamerę.
-- **Głosowo** — nie każdy może lub chce włączyć kamerę. Tracicie część komunikacji niewerbalnej, ale wciąż możecie natychmiast dopytać i wyjaśnić wątpliwości. Nawet jeśli rozmówca nie włączy kamery, Ty możesz zostawić swoją włączoną.
-- **Na Slacku lub w innym komunikatorze** — to pozornie najłatwiejsza i najszybsza opcja. Pozornie, bo kilka rzeczy może pójść nie tak:
-  - bez reakcji i gestów łatwo źle odczytać wiadomość i przypisać jej niewłaściwy ton;
-  - często nie dostajesz żadnego sygnału, że druga osoba zrozumiała Cię tak, jak zamierzałeś;
-  - trudniej doprecyzować kontekst, coś dodać albo wyjaśnić;
-  - jeśli pojawią się pytania, możesz spędzić na pisaniu więcej czasu, niż zajęłaby krótka rozmowa.
+- Face to face - najlepszy sposób, bo pozwala również na komunikację niewerbalną. Dzięki temu łatwiej się nam nawzajem porozumieć i szybko wyjaśnić ewentualne nieścisłości.
+- Face to face - video - w naszej pracy zwykle pracujemy zdalnie, więc spotkanie się na żywo w cztery oczy nie zawsze jest możliwe. Zoom jest dobrą alternatywą w takim przypadku, ale pamiętaj - włącz kamerkę!
+- Zdalnie - audio - nie każdy będzie chciał lub miał możliwość włączyć kamerkę. W takim przypadku zostaje nam audio. Tracimy część komunikacji niewerbalnej, ale i tak jest to lepsza opcja niż ostatnia na tej liście. Dodatkowo, nawet jeśli druga osoba nie włączy kamerki, dobrze będzie, jeśli chociaż my ją włączymy, dając feedback.
+- Slack - pozornie najłatwiejsza i najszybsza z opcji. Pozornie, bo jest cała masa rzeczy, które mogą pójść nie tak:
+  - Brak komunikacji niewerbalnej sprawia, że łatwo o **złą interpretację** i nadanie wiadomości **niewłaściwego tonu**.
+  - Dając w ten sposób feedback, nie mamy często **żadnego sygnału, że zostaliśmy dobrze zrozumiani.**
+  - Nie mamy przestrzeni na doprecyzowanie kontekstu, dodanie czegoś lub wyjaśnienie.
+  - A jeśli ktoś faktycznie dopyta o te kwestie, to okazuje się, że **tracimy czas na pisanie wiadomości** na Slacku, podczas gdy w cztery oczy załatwilibyśmy temat w kilka minut.
 
 <div class="article-media-grid" role="group" aria-label="Cztery sposoby rozmowy">
   <figure><img src="/images/feedback/Why-Should-you-Arrange-a-Face-to-Face-Meeting-with-Sourcing-Agents-in-China-768x480.jpg" width="768" height="412" alt="Ilustracja dwóch osób rozmawiających przy stole" loading="lazy" /><figcaption>Na żywo</figcaption></figure>
@@ -26,79 +26,80 @@ order: 1
   <figure><img src="/images/feedback/slack6.png" width="2400" height="1256" alt="Ilustracja komunikatora Slack" loading="lazy" /><figcaption>Tekst</figcaption></figure>
 </div>
 
-## 2. Zadbaj o okoliczności: czas, miejsce i nastrój
+## 2. Zadbaj o okoliczności (czas, przestrzeń i nastrój)
 
-### Oboje miejcie na to czas
+### Oboje miejcie na to czas:
 
-- Najlepiej wrócić do sytuacji niedługo po tym, jak się wydarzyła. Jeśli powiesz komuś: „W zeszły czwartek, na refinemencie, była taka sytuacja i nie zrozumiałem, o co Ci chodziło”, nie możesz liczyć na to, że będzie pamiętał szczegóły i potrafił się do nich odnieść. Warto jednak zrobić sobie kilka minut przerwy, zanim przekażesz feedback.
-- A jeśli jesteście właśnie w trakcie spotkania i chcesz dać komuś feedback? Zwykle lepiej nie robić tego przy wszystkich. Nie każdy czuje się komfortowo, gdy dostaje uwagę publicznie — nawet pozytywną.
-- Kiedy druga osoba jest wyraźnie zajęta, spieszy się albo kończy pracę, umówcie się na najbliższy dogodny moment. Może to być za kilkanaście minut albo następnego dnia. To nie jest idealne, ale jeśli udzielisz komuś feedbacku, gdy nie ma na niego czasu, możesz zwyczajnie nie zostać wysłuchany.
+- Najlepiej dawać feedback bezpośrednio po jakimś wydarzeniu. Jeśli pójdziemy do kogoś i powiemy: słuchaj, w czwartek w zeszłym tygodniu, na refinemencie, była taka a taka akcja i trochę nie zrozumiałem, o co Ci chodziło, to nie możemy liczyć, że ktoś będzie pamiętał szczegóły takiego spotkania i potrafił się do niego odnieść. Warto jednak zrobić sobie kilka minut przerwy, zanim przekażesz feedback.
+- A może jesteście w trakcie spotkania i chcesz dać komuś feedback? Zwykle nie jest dobrze udzielać feedbacku na spotkaniu przy wszystkich. Nie każdy czuje się komfortowo, kiedy dostaje feedback przy innych. Nawet ten pozytywny.
+- Kiedy osoba, której chcesz dać feedback, jest czymś wyraźnie zajęta, śpieszy się gdzieś albo już kończy pracę - spróbuj umówić się na spotkanie w najbliższym dogodnym terminie - może to być za kilkanaście minut lub nawet następnego dnia. Nie jest to sytuacja idealna, ale jeśli dasz komuś feedback, kiedy ktoś nie ma na to czasu, to zwyczajnie nie zostaniesz wysłuchany/a.
 
 <figure class="article-figure"><img src="/images/feedback/do-you-have-a-moment-for-feedback.jpg" width="1280" height="720" alt="Mem z Darthem Vaderem pytającym, czy jest chwila na feedback" loading="lazy" /></figure>
 
-### Znajdź odpowiednie miejsce
+### Znajdź odpowiednie miejsce:
 
-- Nie dawaj feedbacku w sali pełnej ludzi. Zadbaj o możliwość rozmowy w cztery oczy.
-- Moment i miejsce trzeba wyczuć. Nie zaczynaj rozmowy, kiedy ktoś właśnie wchodzi do toalety, nawet jeśli korytarz jest pusty.
-- Nie musisz od razu rezerwować sali konferencyjnej. Wystarczy miejsce, w którym nikt wam nie przeszkodzi.
+- Nie jest dobrze dawać feedback w sali pełnej ludzi, zadbaj o to, byście mogli porozmawiać w cztery oczy.
+- Moment i miejsce na feedback trzeba wyczuć, nie rób tego np. gdy ktoś ma zamiar wejść do toalety, nawet gdy korytarz jest pusty.
+- Nie znaczy to, że masz rezerwować salkę konferencyjną, po prostu postaraj się, żeby nikt wam nie przeszkadzał.
 
-### Niech będzie spokojnie
+### Niech będzie spokojnie:
 
-- Jeśli ktoś jest pod silnym wpływem emocji, daj mu chwilę na ochłonięcie.
-- Jeśli źle się czuje, jest zmęczony albo ma zły humor, możecie umówić się na następny dzień.
-- To samo dotyczy Ciebie. Udzielanie feedbacku w złym humorze może przynieść efekt odwrotny od zamierzonego.
+- Jeśli widzisz, że ktoś jest pod silnym wpływem emocji - warto odczekać kilka minut, dać czas na ochłonięcie.
+- Kiedy widzisz, że ktoś się źle czuje, jest zmęczony lub ma zły humor, możesz umówić się na rozmowę następnego dnia.
+- Powyższe dwa punkty zastosuj również do siebie. Udzielanie feedbacku w złym humorze może mieć efekt odwrotny od zamierzonego.
 
 <figure class="article-figure article-figure-wide"><img src="/images/feedback/914.png" width="820" height="700" alt="Komiks o tym, jak nawet pozytywna uwaga może paść w złym momencie" loading="lazy" /></figure>
 
 ## 3. Uzyskaj zgodę na feedback
 
-Zanim udzielisz komuś feedbacku, upewnij się, że ta osoba jest gotowa Cię wysłuchać. Możesz zacząć od pytania:
+Zanim komukolwiek udzielimy feedbacku, powinniśmy się najpierw upewnić, że osoba, której feedbacku chcemy udzielić, jest na niego otwarta i nas wysłucha. Dlatego warto zawsze zacząć od pytania w rodzaju:
 
-> „Słuchaj, chciałem Ci dać feedback. Czy możemy porozmawiać?”
+> Słuchaj, chciałem Ci dać feedback, czy możemy porozmawiać?
 
 <figure class="article-figure"><img src="/images/feedback/are-you-ready-for-some-more-constructive-feedback.jpg" width="460" height="380" alt="Mem z pytaniem Are you ready for some more constructive feedback?" loading="lazy" /></figure>
 
-Takie pytanie uprzedza drugą osobę, że za chwilę usłyszy feedback, i daje jej czas, by się przygotowała. Łatwiej wtedy świadomie słuchać i dopytać o to, co niejasne. Możecie też od razu ustalić lepszy moment, jeśli teraz nie ma na to przestrzeni. To zmniejsza ryzyko nieporozumienia.
+Takie pytanie uprzedza drugą osobę o tym, że teraz usłyszy feedback i będzie na to w pewien sposób gotowa. Świadomie nas wysłucha i będzie mogła wyciągnąć wnioski. Upewniając się - zmniejszamy też prawdopodobieństwo, że zajdzie jakieś nieporozumienie.
 
 ## 4. Skup się na faktach
 
-Kiedy dajesz feedback, staraj się nie oceniać drugiej osoby. Nie mów tylko, że coś zrobiła źle. Opisz sytuację, jej zachowanie i skutek. To również podstawa modelu SBI. Porównaj te dwie wersje tej samej uwagi:
+Kiedy już dajemy feedback, to skupmy się na tym, żeby nie oceniać drugiej osoby. Nie mówmy o tym, że ktoś coś zrobił naszym zdaniem źle. Opisujmy sytuację, zachowanie i wskazujmy na efekt tego zachowania.
 
-<aside class="example example-good" aria-label="Przykład opisu sytuacji"><span class="example-mark" aria-hidden="true">✓</span><p>„Wczoraj przed refinementem rozmawialiśmy o tym, że w zadaniu XY-555 trzeba będzie dodać wymagania. Na spotkaniu mówiliśmy o tym zadaniu, ale ten punkt nie padł. Przez to mogliśmy źle wyestymować pracę.”</p></aside>
+<aside class="example example-good" aria-label="Przykład opisu sytuacji"><span class="example-mark" aria-hidden="true">✓</span><p>Wczoraj przed refinementem rozmawialiśmy o tym, że w zadaniu XY-555 trzeba będzie dodać dodatkowe wymagania. Na refinemencie mówiliśmy o tym zadaniu i wcale o tym nie wspomniałeś. Przez to mogliśmy źle wyestymować to zadanie.</p></aside>
 
-<aside class="example example-bad" aria-label="Przykład oceny osoby"><span class="example-mark" aria-hidden="true">×</span><p>„Wczoraj przed refinementem rozmawialiśmy o dodatkowych wymaganiach w zadaniu XY-555. Wprowadzasz zespół w błąd i robisz niepotrzebne zamieszanie, zamiast powiedzieć o czymś wprost.”</p></aside>
+<aside class="example example-bad" aria-label="Przykład oceny osoby"><span class="example-mark" aria-hidden="true">×</span><p>Wczoraj przed refinementem rozmawialiśmy o tym, że w zadaniu XY-555 trzeba będzie dodać dodatkowe wymagania. Wprowadzasz zespół w błąd i robisz niepotrzebne zamieszanie, zamiast powiedzieć o czymś wprost.</p></aside>
 
 <figure class="article-figure"><img src="/images/feedback/please-dont-judge-me.jpg" width="400" height="300" alt="Mem z napisem Please don't judge me" loading="lazy" /></figure>
 
 ## 5. Parafrazuj
 
-Parafraza to ujęcie własnymi słowami tego, co usłyszeliśmy. Pomaga sprawdzić, czy dobrze rozumiemy drugą osobę, i pokazuje, że naprawdę jej słuchamy. Jest też sposobem na dotarcie do potrzeby, która kryje się za jej słowami. Jak to działa w rozmowie o feedbacku?
+Parafraza, czyli ujęcie we własne słowa tego, co usłyszeliśmy, jest świetną techniką prowadzącą do wzajemnego zrozumienia. Pomaga nie tylko się zrozumieć, ale też pokazuje, że naprawdę usłyszeliśmy, co druga strona ma do powiedzenia. Parafraza jest sposobem na dotarcie do potrzeby drugiej strony. Jak to się sprawdza w przypadku feedbacku?
 
-Jeśli chcesz dać feedback dotyczący czyjejś wypowiedzi, możesz zacząć od parafrazy. Porównaj, dokąd prowadzą dwa przebiegi tej samej rozmowy:
+Jeśli dajesz feedback odnośnie jakiejś wypowiedzi, możesz zacząć od parafrazy:
 
 <aside class="example example-good" aria-label="Rozmowa z parafrazą"><span class="example-mark" aria-hidden="true">✓</span><div>
-<p>— Podczas spotkania powiedziałeś, że te zadania nie mają sensu. Czy to znaczy, że są dla Ciebie niezrozumiałe?</p>
-<p>— Nie, po prostu do niczego się biznesowo nie przydadzą.</p>
-<p>— Czyli Twoim zdaniem nie mają wartości dla użytkownika?</p>
-<p>— Tak, użytkownik nic z nich nie będzie miał.</p>
-<p>— Czy to znaczy, że może nie ma potrzeby ich robić?</p>
-<p>— Dokładnie tak.</p>
-<p>— Możesz przedstawić argumenty za rezygnacją z tych zadań?</p>
-<p>— Pewnie tak.</p>
+<p>- Podczas spotkania powiedziałeś, że te zadania nie mają sensu. Czy to znaczy, że dla ciebie są niezrozumiałe?</p>
+<p>- Nie, to znaczy, że nie mają sensu. Do niczego się to biznesowo nie przyda.</p>
+<p>- Czyli Twoim zdaniem nie mają wartości z punktu widzenia użytkownika, tak?</p>
+<p>- No tak, użytkownik nic nie będzie z tego miał.</p>
+<p>- Czy to znaczy, że może nie ma potrzeby, żeby je robić?</p>
+<p>- Dokładnie tak.</p>
+<p>- A czy możesz przedstawić argumenty za tym, żeby zrezygnować z tych zadań?</p>
+<p>- Pewnie tak.</p>
 </div></aside>
 
-Feedback nie pada tu wprost, lecz przez pytania i prośbę. Pomagają odkryć, o co naprawdę chodzi rozmówcy. Osoba, która na spotkaniu po prostu skrytykowała zadania, może teraz przedstawić argumenty za rezygnacją z nich. Zamiast samego „to nie ma sensu” zespół może rozmawiać o wartości pracy dla użytkownika.
+Zauważ, że w tym przypadku feedback został dany nie wprost, ale przy użyciu parafrazujących pytań i prośby. Jaki będzie jego efekt? Osoba, która na poprzednim spotkaniu po prostu skrytykowała zadania do zrobienia, na kolejnym spotkaniu przedstawi argumenty, a spotkanie może okazać się o wiele bardziej efektywne.
 
 <aside class="example example-bad" aria-label="Rozmowa bez parafrazy"><span class="example-mark" aria-hidden="true">×</span><div>
-<p>— Podczas spotkania powiedziałeś, że te zadania nie mają sensu. Czy to znaczy, że są dla Ciebie niezrozumiałe?</p>
-<p>— Nie, po prostu do niczego się biznesowo nie przydadzą.</p>
-<p>— Ale dlaczego nie mają sensu?</p>
-<p>— Bo szkoda czasu na coś bezużytecznego.</p>
-<p>— No dobrze, ale dlaczego uważasz, że te zadania nic nie wniosą?</p>
-<p>— Bo użytkownik nie będzie z nich korzystał.</p>
+<p>- Podczas spotkania powiedziałeś, że te zadania nie mają sensu. Czy to znaczy, że dla ciebie są niezrozumiałe?</p>
+<p>- Nie, to znaczy, że nie mają sensu. Do niczego się to biznesowo nie przyda.</p>
+<p>- Ale dlaczego nie mają sensu?</p>
+<p>- Bo szkoda tracić czas na coś bezużytecznego.</p>
+<p>- No dobrze, ale dlaczego uważasz, że te zadania nic nie wniosą?</p>
+<p>- Bo użytkownik tego nie użyje.</p>
+<p>...</p>
 </div></aside>
 
-Bez parafrazy rozmowa krąży wokół tego samego zarzutu. Trudniej dojść do sedna, a frustracja rośnie, bo obie strony mogą mieć wrażenie, że nie są rozumiane.
+Kiedy nie parafrazujemy, trudniej jest dojść do sedna sprawy i rośnie frustracja, bo obie strony mają wrażenie, że nie są rozumiane.
 
 > Jeśli otrzymałeś feedback, również go sparafrazuj, żeby upewnić się, że dobrze go zrozumiałeś.
 
