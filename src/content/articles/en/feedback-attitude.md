@@ -8,96 +8,90 @@ topic: Feedback
 order: 2
 ---
 
-In [Good advice to get you started](/en/articles/feedback-five-tips-to-start/), I shared a few simple practices you can adopt without much preparation. Each one helps you communicate more effectively. Alongside them, you can work on an attitude that makes it easier to give and receive feedback.
+In [Good advice to get you started](/en/articles/feedback-five-tips-to-start/), I wrote down simple principles you can adopt on your own and without much preparation. All of them support effective communication. Alongside them, you can also practice an attitude that makes giving and receiving feedback easier.
 
 ## Be open to feedback and don't assume bad intentions
 
-When someone gives us feedback, let's try to listen. Don't assume they mean harm when they point something out. Most of the time their intentions are good, even if the delivery could be better.
+When someone gives us feedback, let's try to listen. Let's not assume bad intentions when someone points something out to us. Usually the intentions are good, but the execution can be worse.
 
 <figure class="article-figure"><img src="/images/feedback/good-intentions.jpg" width="551" height="549" alt="Meme: what if everyone has good intentions and misunderstandings get in the way?" loading="eager" /></figure>
 
-Pay particular attention to your reaction when:
+Watch your reactions especially when:
 
-- you take someone's words personally;
-- you start to get upset;
-- you become defensive;
-- you deny or explain things without stopping to think.
+- you take someone's message personally
+- you start getting upset
+- you go on the defensive
+- you deny or explain yourself without really thinking
 
-When you notice one of these reactions, ask yourself whether it is justified. It can also help to take a step back and paraphrase the feedback in your own words, to check that what you heard is what the other person meant.
+When you notice this kind of behavior in yourself, it's worth asking whether it's justified. It also helps to take a step back and paraphrase the feedback in your own words, to make sure that what you heard is what the other person wanted to tell you.
 
-<aside class="article-note"><p>Being open to feedback helps us grow, build relationships, and create a better atmosphere. In the end, it makes life easier for us and for others.</p></aside>
+<aside class="article-note"><p>Being open to feedback means we can grow, we build relationships, we take care of a good atmosphere, and in the end we make life easier for ourselves and for others.</p></aside>
 
 <figure class="article-figure"><img src="/images/feedback/i-want-your-feedback.jpg" width="343" height="473" alt="Uncle Sam meme with the words I want your feedback" loading="lazy" /></figure>
 
 ## Accept that we're different
 
-Whether we're giving or receiving feedback, we need to remember that we're different. Those differences include:
+Whether we're giving feedback or receiving it, we need to remember that we're different. There are really a lot of things that make us different:
 
-- what we like to eat;
-- political views;
-- ways of thinking;
-- personality and character traits;
-- values;
-- knowledge and experience;
-- how we're feeling at the time.
+- food preferences
+- political preferences
+- cognitive preferences
+- personality / character traits
+- values
+- knowledge and experience
+- how we're feeling
 
-Who we are affects what we say, how we say it, and how we see other people. It helps to pause now and then and think about those differences. That makes it easier to understand the person we're talking to.
+We're only human, though, and who we are will always affect what we say and how we say it, as well as how we perceive others. However we differ, we should at least sometimes stop and think about those differences. That makes it easier to understand the other person.
 
 <div class="article-media-grid article-media-pair" role="group" aria-label="Two memes about differences">
   <figure><img src="/images/feedback/you-seewe-are-not-so-different-you-and-i.jpg" width="400" height="400" alt="Voldemort meme: we're not so different" loading="lazy" /></figure>
   <figure><img src="/images/feedback/e1e7k.jpg" width="380" height="381" alt="Meme: we're all different, and that's beautiful" loading="lazy" /></figure>
 </div>
 
-## Practice empathy: try to understand the other person's perspective
+## Practice empathy: we don't have to agree with feedback, but let's try to understand the other person's perspective
 
-We don't always have to agree with the feedback we receive. The person giving it may not know things we know. Still, they're speaking from their own perspective and have a reason for it, even if that reason isn't immediately clear to us.
+It's worth remembering that we don't always have to agree with feedback. Someone giving us feedback may not know many things that we know. But that person is only presenting their perspective, and they have a reason for it, even if it's hard for us to understand.
 
 <figure class="article-figure"><img src="/images/feedback/what-if-i-told-you-we-can-agree-to-disagree-and-still-be-friends.jpg" width="400" height="400" alt="Meme: we can disagree and still be friends" loading="lazy" /></figure>
 
-Here's what happens when both people focus on proving that they're right:
-
 <aside class="example example-bad" aria-label="Conversation without trying to understand"><span class="example-mark" aria-hidden="true">×</span><div>
-<p>— Why are you so stubborn? There's nothing to debate. Let's build a basic version and change it later if we need to.</p>
+<p>— Why are you so stubborn? There's nothing to debate here. We just need to build the basic version, and then, if we have to, we'll rework it.</p>
 <p>— Yes, and waste time on an unnecessary refactor.</p>
-<p>— We won't, because I don't think we'll need one. Besides, we'll find out sooner whether this feature is worth building at all.</p>
-<p>— If we throw it together, users might not want to use it.</p>
-<p>— If we keep debating, we won't have time to do the work.</p>
+<p>— We won't, because I don't think we'll need one, and besides, this way we'll find out sooner whether this feature makes sense at all.</p>
+<p>— If we throw it together, users really might not want to use it.</p>
+<p>— If we keep debating it this much, we won't have time to work.</p>
 </div></aside>
 
-Both people are convinced they're right and the other person is wrong. You may feel closer to one of these positions yourself. I think both have value and both come from professionalism and good intentions. One person may need more time to think things through, while the other would rather start doing the work.
-
-The same conversation can go differently when one person names the other's need and explains their own:
+Here, both people are trying to convince each other. Both think they're right and the other side is wrong. I bet you also lean toward one of these two attitudes. In my view both are valuable, and both come from professionalism and the best of intentions. The difference may be that one person is more analytical and needs to think everything through, while the other is more impulsive and wants to act.
 
 <aside class="example example-good" aria-label="Conversation with an effort to understand"><span class="example-mark" aria-hidden="true">✓</span><div>
-<p>— Why are you so stubborn? There's nothing to debate. Let's build a basic version and change it later if we need to.</p>
-<p>— I understand that you want to keep it simple and move quickly so we can see whether we need this feature at all. I need a little more time to think through the details. Could we spend another 15–20 minutes on it at our next meeting and write down possible future changes, so we can take them into account?</p>
-<p>— I still don't think it's necessary, but all right. You suggested an hour earlier. If 15 minutes would help you work on it, let's do that.</p>
+<p>— Why are you so stubborn? There's nothing to debate here. We just need to build the basic version, and then, if we have to, we'll rework it.</p>
+<p>— I understand you want to do it simply and quickly to check whether it's needed at all. I, on the other hand, need to think about it a bit more and add details. Could we spend another 15–20 minutes on it at the next meeting and at least write down the changes we can expect in the future, so we can take them into account?</p>
+<p>— I still don't think it's necessary, but fine. Earlier you suggested an hour. If it helps you work better, I'm somehow okay with those 15 minutes.</p>
 </div></aside>
 
-When we accept our differences, it's easier to stop arguing about who's right and reach a compromise.
+Once we accept that we're different, it's much easier to give up arguing and reach a compromise.
 
 ## We can't learn from mistakes we won't admit
 
-We make mistakes every day. We notice some ourselves and learn about others through feedback. Sometimes it's hard to say who was responsible for a mistake.
+One important thing to finish with. We make mistakes every day. We notice some of them ourselves, and we can learn about others from feedback. There are also mistakes whose “author” is hard to find.
 
-<aside class="article-note"><p>Imagine you're one of eight people building an app. Users run into a serious bug after using a feature in an unusual way. Who made the mistake?</p>
-<p><strong>The client?</strong> The feature was their idea. They could have anticipated different ways of using it.</p>
-<p><strong>The Product Owner?</strong> They could have included this case in the requirements.</p>
-<p><strong>The developers?</strong> They took part in refinement and wrote the code. They had opportunities to spot the gap.</p>
-<p><strong>QA?</strong> They joined refinement and tested the app. Finding problems like this is part of their work.</p></aside>
+<aside class="article-note"><p>Imagine you're building an app in an eight-person team. Users run into a fairly serious bug. It happens after they use one of the features in a very unusual way. Who made the mistake?</p>
+<p>The client? The feature was their idea; they should have foreseen different situations.</p>
+<p>The PO? Like the client, they could have described this case in the requirements.</p>
+<p>The developers? They also took part in refinement, then wrote the code; they had plenty of chances to spot the gap.</p>
+<p>QA? They took part in refinement and tested the app; finding problems like this is their job.</p></aside>
 
 <figure class="article-figure article-figure-wide"><img src="/images/feedback/f63ed4353608ac2c6080fdafedd60865.png" width="1210" height="800" alt="Meme of a monkey looking from side to side" loading="lazy" /></figure>
 
-There's little point trying to answer the question that way, because each of these people could have helped prevent the problem. In a similar situation, I suggest three steps:
+The truth is, there's no point trying to answer the question put that way. Because any of them could have prevented the problem. When we find ourselves in a situation like this, I recommend three simple steps:
 
 1. What happened?
 2. Why didn't I anticipate it?
-3. What can I do to avoid a similar situation in the future?
+3. What can I do to avoid a situation like this in the future?
 
-You can also shift your perspective when talking about your own feelings:
+<aside class="example example-bad" aria-label="Example that blames the other person"><span class="example-mark" aria-hidden="true">×</span><p>I feel terribly stressed because of the pressure you put on us at the end of the sprint.</p></aside>
 
-<aside class="example example-bad" aria-label="Example that blames the other person"><span class="example-mark" aria-hidden="true">×</span><p>“I feel terribly stressed because of the pressure you put on us at the end of the sprint.”</p></aside>
+<aside class="example example-good" aria-label="Example that reflects on the situation"><span class="example-mark" aria-hidden="true">✓</span><p>I feel terribly stressed. We took too much into the sprint, or we planned it badly; I need to pay attention to that next time.</p></aside>
 
-<aside class="example example-good" aria-label="Example that reflects on the situation"><span class="example-mark" aria-hidden="true">✓</span><p>“I feel terribly stressed. We took on too much work in the sprint, or we planned it badly. I need to pay attention to that next time.”</p></aside>
-
-An open, empathetic attitude doesn't appear overnight. Like a muscle, it grows through regular practice. Following the principles above is already a way to practice it.
+Remember that reaching an open, empathetic attitude is a process. It won't appear overnight; rather, it builds up (like muscles at the gym) only if we practice regularly. The good news is that following the principles above (which aren't hard to apply) is practice in itself.
