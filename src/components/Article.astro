@@ -67,6 +67,10 @@ const { Content } = await render(entry);
   .article-content :global(.article-diagram) { max-width: 420px; margin: 20px auto 26px; border: 1px solid var(--line); background: var(--bg-card); }
   .article-content :global(.article-diagram svg) { display: block; width: 100%; height: auto; padding: 16px; box-sizing: border-box; overflow: visible; }
   .article-content :global(.article-diagram figcaption) { padding: 6px 10px; border-top: 1px solid var(--line); font-family: var(--font-mono); font-size: .7rem; color: var(--fg-muted); }
+  .article-content :global(details) { margin: 4px 0 20px; border: 1px solid var(--line); background: var(--bg-card); }
+  .article-content :global(summary) { padding: 6px 10px; font-family: var(--font-mono); font-size: .75rem; color: var(--fg-muted); cursor: pointer; }
+  .article-content :global(details[open] summary) { border-bottom: 1px solid var(--line); }
+  .article-content :global(details pre) { margin: 0; padding: 12px 14px; font-size: .75rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
   .article-content :global(.d-box) { fill: var(--bg); stroke: var(--fg-dim); stroke-width: 1; }
   .article-content :global(.d-key) { stroke: var(--accent); }
   .article-content :global(.d-line) { fill: none; stroke: var(--fg-dim); stroke-width: 1.2; }
