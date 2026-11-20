@@ -74,8 +74,9 @@ const links: Array<{ label: string; href: string; icon?: IconName; title?: strin
   .hero-name { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 18px; }
   .hero-tagline { color: var(--accent); font-size: 0.9rem; line-height: 1.6; margin: 0; }
   .hero-portrait { grid-area: portrait; display: block; width: 100%; max-width: 300px; height: auto; border: 1px solid var(--line); }
-  .hero-body { grid-area: body; align-self: start; }
-  .hero-intro { max-width: 50ch; font-size: 1.05rem; margin: 0 0 14px; }
+  /* The width is set on the whole body, in the intro's font size, so the links wrap at the paragraph's edge. */
+  .hero-body { grid-area: body; align-self: start; max-width: 50ch; font-size: 1.05rem; }
+  .hero-intro { font-size: inherit; margin: 0 0 14px; }
   .hero-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.85rem; margin: 24px 0 0; }
   .hero-link { display: inline-flex; align-items: center; gap: 7px; }
   .home-materials { max-width: 860px; margin: clamp(24px, 4vw, 56px) auto 0; }
