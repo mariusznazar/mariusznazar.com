@@ -6,6 +6,7 @@ description: "On staying open to feedback, accepting differences, practicing emp
 summary: "How openness, empathy, and learning from mistakes make feedback conversations easier."
 topic: Feedback
 order: 2
+published: 2026-10-01
 ---
 
 In [Good advice to get you started](/en/articles/feedback-five-tips-to-start/), I wrote down simple principles you can adopt on your own and without much preparation. All of them support effective communication. Alongside them, you can also practice an attitude that makes giving and receiving feedback easier.

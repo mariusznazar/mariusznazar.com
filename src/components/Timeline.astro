@@ -22,6 +22,7 @@ const TRACKS: Array<{ track: Track; label: string }> = [
 ];
 const statusEn: Record<string, string> = {
   'ukończony': 'completed',
+  'w trakcie': 'in progress',
   'bez zaliczenia': 'not completed',
   'planowany': 'planned',
   'niepubliczny': 'not public',
@@ -103,6 +104,7 @@ function toCard(span: Span): CardView {
       title: translated ? translated.itemTitles![index]! : item.title,
       status: item.status ? itemStatus(item.status) : undefined,
       link: item.link,
+      linkLabel: d.track === 'edukacja' ? ui.certificate : ui.view,
     })),
     badge,
     link,

@@ -1,16 +1,24 @@
-- id: strona-mariusznazar
+- id: projekty-wlasne
   track: artefakt
   start: 2026-09
   end: null
   ongoing: true
-  title: Ta strona
+  title: Własne projekty publiczne
   org: null
   summary: >
-    Własna strona z bio i materiałami o warsztacie pracy. Zbudowana na Astro,
-    hostowana na Cloudflare Pages.
-  tools: [Astro, Cloudflare Pages]
+    Trzy rzeczy, które buduję po godzinach i pokazuję publicznie: tę stronę,
+    swój proces pracy nad produktem z agentami AI i grę, na której ten proces
+    sprawdzam.
+  tools: [Astro, TypeScript, React, Claude Code]
   access: publiczny
-  link: https://mariusznazar.com
+  link: null
+  items:
+    - title: Ta strona, z bio i materiałami o warsztacie pracy
+      link: https://mariusznazar.com
+    - title: "The Way: fundament produktu w pięciu plikach obok kodu i cykl zadania od opisu zmiany do pull requesta"
+      link: https://github.com/mariusznazar/the-way
+    - title: "Loop2: gra w przeglądarce, w której nie steruje się postaciami, tylko pisze im programy"
+      link: https://loop2.mariusznazar.com/
 
 - id: canvas-ai-managers-3
   track: artefakt

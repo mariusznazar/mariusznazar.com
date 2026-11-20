@@ -6,6 +6,7 @@ description: "Jak przechodzę lekcje kursów i artykuły tak, żeby kończyły s
 summary: "Lekcja kursu albo artykuł dają niewiele, dopóki zostają teorią. Przechodzę je więc inaczej: każdy element odnoszę do własnej pracy, wypróbowuję na swoim projekcie i kończę decyzją, czy go przejmuję, odrzucam, czy zostawiam otwarty. Dopiero w ten sposób nauka zaczęła zmieniać moją codzienność."
 topic: Praca z AI
 order: 5
+published: 2026-10-24
 ---
 
 ## Przeczytane i zapomniane

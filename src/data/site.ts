@@ -21,7 +21,7 @@ export const site = {
     pl: {
       tagline: 'testowanie · procesy zespołów · warsztat pracy z agentami AI',
       intro: [
-        'Od 2018 roku zajmuję się jakością oprogramowania i sposobem, w\u00a0jaki powstaje. Badam problemy, szukam rozwiązań i wspieram użytkowników, zespoły oraz interesariuszy. Poza pracą buduję własny warsztat i sprawdzam, co zmieniają w\u00a0nim kolejne wersje narzędzi AI.',
+        'Od 2018 roku zajmuję się jakością oprogramowania i procesem jego wytwarzania. Badam problemy, szukam rozwiązań i wspieram użytkowników, zespoły oraz interesariuszy. Poza pracą buduję własny warsztat i sprawdzam, co zmieniają w\u00a0nim kolejne wersje narzędzi AI.',
       ],
       description: 'Mariusz Nazar: QA Lead. Testowanie, procesy zespołów, warsztat pracy z agentami AI.',
       portraitAlt: 'Portret Mariusza Nazara',
@@ -31,11 +31,14 @@ export const site = {
       backToMaterials: 'Wszystkie materiały',
       sourceCode: 'kod tej strony',
       email: 'e-mail',
+      loop2Title: 'Loop2: gra w przeglądarce, w której piszesz programy dla postaci',
+      published: 'opublikowano',
+      updated: 'zaktualizowano',
     },
     en: {
       tagline: 'software testing · team processes · working with AI agents',
       intro: [
-        'Since 2018, I’ve worked on software quality and how software gets built. I investigate problems, look for solutions, and support users, teams, and stakeholders. Outside work, I’m developing my own practice with AI agents and exploring how new generations of tools reshape it.',
+        'Since 2018, I’ve worked on software quality and the process of building it. I investigate problems, look for solutions, and support users, teams, and stakeholders. Outside work, I’m developing my own practice with AI agents and exploring how new generations of tools reshape it.',
       ],
       description: 'Mariusz Nazar: QA Lead. Software testing, team processes, and working with AI agents.',
       portraitAlt: 'Portrait of Mariusz Nazar',
@@ -45,6 +48,9 @@ export const site = {
       backToMaterials: 'All articles',
       sourceCode: 'source code',
       email: 'email',
+      loop2Title: 'Loop2: a browser game where you write programs for the characters',
+      published: 'published',
+      updated: 'updated',
     },
   },
 };

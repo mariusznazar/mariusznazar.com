@@ -6,6 +6,7 @@ description: "How I go through course lessons and articles so that they end with
 summary: "A course lesson or an article gives little while it stays theory. So I go through them differently: I relate each element to my own work, try it out on my own project and end with a decision to adopt it, reject it or leave it open. Only this way has learning started to change my everyday work."
 topic: Working with AI
 order: 5
+published: 2026-10-24
 ---
 
 ## Read and forgotten

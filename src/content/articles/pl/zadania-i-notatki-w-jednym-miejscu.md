@@ -6,6 +6,7 @@ description: "Jak notatki podręczne, przegląd na koniec dnia i dashboard powst
 summary: "Po wielu latach skakania między aplikacjami do zadań system zaczął działać dopiero wtedy, gdy zadania i notatki trafiły w jedno miejsce. I to on przetrwał przeprowadzkę z Notion do Obsidiana."
 topic: Organizacja pracy
 order: 3
+published: 2026-10-23
 ---
 
 ## Zawsze czegoś brakowało

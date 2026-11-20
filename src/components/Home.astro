@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import ArticleList from './ArticleList.astro';
+import LinkIcon, { type IconName } from './LinkIcon.astro';
 import portrait from '../assets/mariusz-nazar-2026.png';
 import { articlesFor } from '../data/articles';
 import { pagePath, site, type Locale } from '../data/site';
@@ -10,12 +11,14 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 const copy = site.copy[locale];
 const articles = (await articlesFor(locale)).slice(0, 2);
-const links = [
+const links: Array<{ label: string; href: string; icon?: IconName; title?: string }> = [
   { label: 'Bio', href: pagePath(locale, 'bio') },
   { label: copy.materials, href: pagePath(locale, 'materials') },
-  { label: 'GitHub', href: 'https://github.com/mariusznazar' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mariusz-nazar-100/' },
-  { label: copy.email, href: 'mailto:mariusznn@gmail.com' },
+  { label: 'GitHub', href: 'https://github.com/mariusznazar', icon: 'github' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mariusz-nazar-100/', icon: 'linkedin' },
+  { label: 'Printables', href: 'https://www.printables.com/@MariuszNazar_5604422', icon: 'printables' },
+  { label: 'Loop2', href: 'https://loop2.mariusznazar.com/', icon: 'loop2', title: copy.loop2Title },
+  { label: copy.email, href: 'mailto:mariusznn@gmail.com', icon: 'mail' },
 ];
 ---
 
@@ -36,7 +39,11 @@ const links = [
     <div class="hero-body">
       {copy.intro.map((paragraph) => <p class="hero-intro">{paragraph}</p>)}
       <p class="hero-links mono">
-        {links.map((link) => <a href={link.href}>{link.label}</a>)}
+        {links.map((link) => (
+          <a class="hero-link" href={link.href} title={link.title}>
+            {link.icon && <LinkIcon name={link.icon} />}{link.label}
+          </a>
+        ))}
       </p>
     </div>
   </section>
@@ -70,6 +77,7 @@ const links = [
   .hero-body { grid-area: body; align-self: start; }
   .hero-intro { max-width: 50ch; font-size: 1.05rem; margin: 0 0 14px; }
   .hero-links { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: 0.85rem; margin: 24px 0 0; }
+  .hero-link { display: inline-flex; align-items: center; gap: 7px; }
   .home-materials { max-width: 860px; margin: clamp(24px, 4vw, 56px) auto 0; }
   .home-materials-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; margin-bottom: 16px; }
   .home-materials-heading h2 { font-size: clamp(1.5rem, 2.5vw, 1.9rem); }

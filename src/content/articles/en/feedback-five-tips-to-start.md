@@ -6,6 +6,7 @@ description: "Five principles for giving and receiving feedback: talk face to fa
 summary: "Five things you can put into practice right away to make giving and receiving feedback easier."
 topic: Feedback
 order: 1
+published: 2026-10-01
 ---
 
 ## 1. Meet face to face

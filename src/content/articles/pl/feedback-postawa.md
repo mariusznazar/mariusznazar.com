@@ -6,6 +6,7 @@ description: "O otwartości na feedback, akceptowaniu różnic, empatii i uczeni
 summary: "Jak otwartość, empatia i uczenie się na błędach pomagają rozmawiać o feedbacku."
 topic: Feedback
 order: 2
+published: 2026-10-01
 ---
 
 W artykule [Dobre rady na początek](/materialy/feedback-piec-rad-na-poczatek/) spisałem proste zasady, które możesz wprowadzić niezależnie i bez szczególnego przygotowania. Wszystkie one sprzyjają efektywnej komunikacji. Oprócz nich możesz również praktykować odpowiednią postawę, która będzie sprzyjać dawaniu i przyjmowaniu feedbacku.
