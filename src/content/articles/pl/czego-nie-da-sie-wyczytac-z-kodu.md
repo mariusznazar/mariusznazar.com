@@ -2,10 +2,12 @@
 locale: pl
 key: product-foundation
 title: "Czego nie da się wyczytać z kodu i jak to zapisać?"
-description: "Pięć elementów fundamentu produktu, który leży obok kodu i zapisuje to, czego z kodu nie da się wyczytać, na przykładzie gry Loop, razem z kosztem takiej pracy z agentami AI."
+description: "Pięć elementów fundamentu produktu, który leży obok kodu i zapisuje to, czego z kodu nie da się wyczytać, na przykładzie gry Loop2, razem z kosztem takiej pracy z agentami AI."
 summary: "Praca z agentami AI zostawia po sobie stos specyfikacji i opisów zadań, do których nikt nie wraca. Próbuję czegoś innego: fundamentu z pięciu elementów, który leży obok kodu i zapisuje to, czego z kodu nie wyczytasz - decyzje z powodami, reguły, mapę części, słownik i fakty o świecie wokół produktu. Pokazuję, co robi każdy z nich i ile to dziś kosztuje."
 topic: Praca z AI
 order: 6
+published: 2026-10-25
+updated: 2026-11-20
 ---
 
 ## Wiedza, która ląduje w archiwum
@@ -14,11 +16,11 @@ W pracy z agentami AI powstaje cała masa dokumentów: kierunek, wizja, opisy pr
 
 Tyle że do archiwum mało kto wraca. Alfredo Perez przez dziewięć miesięcy pisał osobną specyfikację do każdej zmiany i uzbierał ich 238. Nie otworzył ponownie ani jednej, a agent też ich nie czytał, bo nie dało się ustalić, która jest aktualna. Perez ujął to tak: „a spec that nothing reads isn't documentation, it's exhaust”. Naprawił to czternastoma specyfikacjami, po jednej na każdą funkcję produktu, które poprawia razem z kodem. Tak samo działa OpenSpec: specyfikacja opisuje, jak system działa dziś.
 
-Ja próbuję podobnej rzeczy, tylko po swojemu i w innej formie. Buduję fundament, który ma być czymś w rodzaju odlewu aplikacji z drugiej strony: opisuje decyzje, reguły i części produktu tak, żeby po roku pracy cała ta wiedza była nadal przy produkcie. Założenie jest takie, że wystarczy dobrze określić, co chcemy zrobić, i zapisać decyzje i wymagania, a agenci na tej podstawie sami napiszą kod - dobrej jakości i przetestowany z każdej strony.
+Ja próbuję podobnej rzeczy, tylko po swojemu i w innej formie. Buduję fundament, który ma być czymś w rodzaju odlewu aplikacji z drugiej strony: opisuje decyzje, reguły i części produktu tak, żeby po roku pracy cała ta wiedza była nadal przy produkcie. Założenie jest takie, że wystarczy dobrze określić, co chcemy zrobić, i zapisać decyzje i wymagania, a agenci na tej podstawie sami napiszą kod - dobrej jakości i przetestowany z każdej strony. Cały proces, razem z cyklem zadania, opisałem w publicznym repozytorium [the-way](https://github.com/mariusznazar/the-way).
 
 ## Pięć elementów
 
-Fundament to pięć plików, które leżą w repozytorium produktu obok kodu i zmieniają się razem z nim. Wypróbowuję go na grze Loop, którą buduję od zera od początku października - to gra w przeglądarce, w której nie steruje się postaciami, tylko pisze im programy, a one same próbują przetrwać na mapach. Gra ma fundament od pierwszego zadania i dziś są w nim 72 decyzje, 50 reguł i 30 faktów. Pod opisem każdego elementu jest jeden wpis z tego fundamentu, w takiej postaci, w jakiej leży w pliku.
+Fundament to pięć plików, które leżą w repozytorium produktu obok kodu i zmieniają się razem z nim. Wypróbowuję go na grze [Loop2](https://loop2.mariusznazar.com/), którą buduję od zera od początku października - to gra w przeglądarce, w której nie steruje się postaciami, tylko pisze im programy, a one same próbują przetrwać na mapach. Gra ma fundament od pierwszego zadania i dziś są w nim 431 decyzji, 143 reguły i 160 faktów. Pod opisem każdego elementu jest jeden wpis z tego fundamentu, w takiej postaci, w jakiej leży w pliku.
 
 **Decyzje.** Dziennik decyzji zbiera wybory, których trzymamy się w dalszej pracy: co wybraliśmy, dlaczego i jakie opcje odpadły, przy każdej z powodem. Trafia tu też to, po co jest produkt i czego świadomie nie robi. Każdy wpis zaczyna się od jednego do trzech krótkich zdań, które mówią, jak ma być - tak konkretnie, żeby dało się sprawdzić, czy kod się ich trzyma. Pod nimi jest opis, jak to sprawdzić: odesłanie do reguły z testem albo przykład zmiany, która decyzji się trzyma, i takiej, która ją łamie. Na tych przykładach agent ocenia kod.
 
@@ -28,22 +30,24 @@ Fundament to pięć plików, które leżą w repozytorium produktu obok kodu i z
 ```markdown
 ### D-50 — Whose is the chest?
 
-The chest belongs to a team. Each character belongs to exactly one team, and a character has no
-chest of its own.
+The chest belongs to a team and has a cap on the total count of pieces, by the same rule of capacity as the backpack. Each character belongs to exactly one team and uses its chest, and a character has no chest of its own.
 
 - **Scope:** simulation, browser-view
 - **Based on:** none
 - **Relations:** none
-- **Verification:** invariants: character-team. For the chest, an agent compares a change with the
-  decision:
-  - complies: a lone character shown with the chest of its one-member team
-  - violates: a character with a personal chest beside the team's; a character outside every team
-- **Origin:** koncepcja_projektowa.md in the vault (Notes/Projects/(P) Loop), D37 and §4 "Kierunek: przedmioty krążą między mapami" · the full approved entry: definicja_mvp_loop2.md in the vault (Notes/Projects/(P) Loop), § Projected foundation changes, "Whose is the chest?"
+- **Verification:** invariants: character-team · trip-transfer. tests: the chest held by the team,
+  with a cap on the count of the pieces of all its items together, a chest above it refused at a
+  load and a completion depositing no more than the room the pieces of another item leave; a
+  character holding no chest of its own.
+- **Origin:** none
 
-*Rationale:* a team of one behaves exactly as a lone character with a chest of its own; the shared
-chest is the one mechanism of cooperation — one character brings stone out of one map, another
-takes it to the next.
-*Rejected:* the player's chest — assigning a character to a team would change nothing; the
+*Rationale:* a team of one behaves exactly as a lone character with a chest of its own, as the single
+chest did before there were teams; the chest of a character is the chest of its team, the same object seen
+from the character's screen. One rule of capacity serves both the backpack and the chest, not two.
+The shared chest is the one mechanism of cooperation — one character brings stone out of one map,
+another takes it to the next.
+*Rejected:* the player's chest — assigning a character to a team would change nothing, so a team
+would be a drawer; the
 character's chest — no cooperation at all; a character outside a team with a personal chest — a
 second kind of chest and an exception everywhere it is read.
 ```
@@ -78,17 +82,26 @@ game minute by game minute, when they receive the same real-time inputs.
 ```markdown
 ## account-server
 
-The part is the account and save server: it serves the built game and handles the HTTP requests sent to it.
+The part is the account and save server: it serves the built game, handles the HTTP requests sent to it, owns the persistence of accounts, sessions and each player's saved game state and previous save, sends account email through the mail service, accepts the report of a failure that the browser sends and writes it as one line of its log, gives the operator a command that blocks and unblocks a player account, a command that grants and revokes the previous-save privilege of a player account, a command that gives and takes the owner role of an account and a command that writes one consistent backup of the database to its standard output, answers the routes of the owner panel — the list of accounts and the blocking, unblocking, granting and revoking of the privilege of another account — only to a session of an account with the owner role, checks the database's read, write and backup operations on the Node.js release of the image it is built into, and measures its own password work in the image it runs in.
 
 - **Files:** src/server/**
   tests/http.test.mjs
   tests/startup.test.mjs
+  tests/transport.test.mjs
+  tests/passwords.test.mjs
+  tests/account-storage.test.mjs
+  tests/account-owner.test.mjs
+  tests/owner-routes.test.mjs
+  tests/account-backup.test.mjs
+  tests/account-database-check.test.mjs
+  tests/account-database-check-standin.mjs
+  tests/account-mail.test.mjs
   tests/invariants/test_account_server_express_http.py
   tests/invariants/test_loop2_api_error_route.py
   tests/invariants/test_loop2_one_serving_process.py
   tests/invariants/test_account_server_occupied_address.py
   tests/invariants/test_account_server_default_address.py
-- **Depends on:** browser-view · simulation · build-tools
+- **Depends on:** browser-view · build-tools
 - **Trust boundary:** src/server/**
 ```
 
@@ -142,18 +155,20 @@ Z tego samego powodu kilka rzeczy nie ma w fundamencie osobnego miejsca. Testy s
 
 ## Ile to kosztuje
 
-Przez „zadanie” rozumiem jeden przebieg od opisu zmiany do pull requesta, który przeglądam i scalam. Po drodze jedni agenci piszą kod, testy i wpisy fundamentu, a inni je przeglądają. Trzy ostatnie zadania na grze wyglądały tak (czas to praca agentów, bez czekania na mnie):
+Przez „zadanie” rozumiem jeden przebieg od opisu zmiany do pull requesta, który przeglądam i scalam. Po drodze jedni agenci piszą kod, testy i wpisy fundamentu, a inni je przeglądają. Trzy zadania na grze z drugiej połowy listopada wyglądały tak (czas to praca agentów, bez czekania na mnie i bez pełnego przebiegu testów):
 
 | Zadanie | Jak szło | Czas | Tokeny |
 |---|---|---|---|
-| testy bez stałego portu | jeden autor | 44 min | 46 mln |
-| siedziba i drużyna | jeden autor | 51 min | 62 mln |
-| ognisko i jedzenie | specyfikacja, plan, 14 kawałków | 3 h 50 min | 224 mln |
+| słowo „ściana” w słowniku | jeden autor | 10 min | 12 mln |
+| 20 decyzji skróconych pod limit długości | jeden autor | 32 min | 42 mln |
+| przyrząd do balansu gry | plan, 10 kawałków | 2 h 19 min | 184 mln |
 
-Małą zmianę robi jeden agent, bez planu, i to widać w kosztach. Duża zmiana dalej zajmuje agentom prawie cztery godziny. W każdym z trzech przebiegów 96–98% tokenów to ten sam kontekst wczytywany od nowa: każdy agent przy każdym kroku czyta zadanie, plan i fundament. Cały mój sposób pracy nad produktem udało mi się już trochę odchudzić, ale nadal jest za ciężki.
+W październiku mała zmiana kosztowała 44–51 minut i 46–62 mln tokenów, a duża prawie cztery godziny i 224 mln. To nie są te same zadania, więc nie da się ich porównać jeden do jednego, ale kierunek widać. Dziś autor zmiany pracuje na tańszym modelu niż ten, który ją przegląda. Prawie wszystkie tokeny to nadal ten sam kontekst wczytywany od nowa: każdy agent przy każdym kroku czyta zadanie, plan i fundament. Cały mój sposób pracy nad produktem jest już dużo lżejszy, ale nadal jest za ciężki.
 
 ## Na koniec
 
 To dopiero początek i jestem przekonany, że da się ten koszt obniżyć, zachowując to, co fundament daje.
 
 Jeśli chcesz spróbować, zacznij od jednego elementu - decyzji. Przy następnym wyborze, który zrobisz razem z agentem, zapisz obok samego wyboru, dlaczego go zrobiłeś i jakie opcje odpadły, i trzymaj ten zapis w repozytorium obok kodu.
+
+*Zaktualizowano 20 listopada 2026: liczby wpisów w fundamencie, przykładowe wpisy, koszty zadań oraz linki do gry i repozytorium the-way.*

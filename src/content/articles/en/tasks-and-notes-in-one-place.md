@@ -6,6 +6,7 @@ description: "How quick notes, an end-of-day review, and a dashboard took shape 
 summary: "After many years of hopping between task apps, my system only started to work once tasks and notes landed in one place. And that system is what survived the move from Notion to Obsidian."
 topic: Work organization
 order: 3
+published: 2026-10-23
 ---
 
 ## Something was always missing

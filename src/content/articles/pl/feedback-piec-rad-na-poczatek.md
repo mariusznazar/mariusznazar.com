@@ -6,6 +6,7 @@ description: "Pięć zasad, które pomagają dawać i przyjmować feedback: rozm
 summary: "Pięć zasad, które możesz wprowadzić od zaraz, żeby łatwiej dawać i przyjmować feedback."
 topic: Feedback
 order: 1
+published: 2026-10-01
 ---
 
 ## 1. Spotkaj się face to face

@@ -31,6 +31,9 @@ export const site = {
       backToMaterials: 'Wszystkie materiały',
       sourceCode: 'kod tej strony',
       email: 'e-mail',
+      loop2Title: 'Loop2: gra w przeglądarce, w której piszesz programy dla postaci',
+      published: 'opublikowano',
+      updated: 'zaktualizowano',
     },
     en: {
       tagline: 'software testing · team processes · working with AI agents',
@@ -45,6 +48,9 @@ export const site = {
       backToMaterials: 'All articles',
       sourceCode: 'source code',
       email: 'email',
+      loop2Title: 'Loop2: a browser game where you write programs for the characters',
+      published: 'published',
+      updated: 'updated',
     },
   },
 };

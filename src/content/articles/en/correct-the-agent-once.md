@@ -6,6 +6,7 @@ description: "How a review at the end of every session and a daily review of all
 summary: "An agent doesn't learn from yesterday's conversation, so two reviews do it instead: one at the end of every session, the other daily, across all of the previous day's sessions. After a few months I stopped thinking about how to change its behavior."
 topic: Working with AI
 order: 4
+published: 2026-10-24
 ---
 
 ## Details that keep coming back

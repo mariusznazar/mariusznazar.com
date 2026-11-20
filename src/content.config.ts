@@ -7,6 +7,12 @@ const yearMonth = z.preprocess(
   z.string().regex(/^\d{4}(-(0[1-9]|1[0-2]))?$/).nullable(),
 );
 
+/** YAML reads a bare date as a Date; keep it as a YYYY-MM-DD string. */
+const isoDate = z.preprocess(
+  (v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v),
+  z.string().regex(/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/),
+);
+
 const base = {
   id: z.string().optional(),
   start: yearMonth,
@@ -40,7 +46,7 @@ export const collections = {
     schema: z.object({
       ...base,
       track: z.literal('edukacja'),
-      status: z.enum(['ukończony', 'bez zaliczenia', 'planowany']).optional(),
+      status: z.enum(['ukończony', 'w trakcie', 'bez zaliczenia', 'planowany']).optional(),
       link: z.string().url().nullable().optional(),
     }),
   }),
@@ -54,6 +60,10 @@ export const collections = {
       summary: z.string(),
       topic: z.string(),
       order: z.number().int().nonnegative(),
+      /** YYYY-MM-DD: the day the article reached the live site */
+      published: isoDate,
+      /** YYYY-MM-DD: the day of the last change of content worth telling the reader about */
+      updated: isoDate.optional(),
     }),
   }),
 };

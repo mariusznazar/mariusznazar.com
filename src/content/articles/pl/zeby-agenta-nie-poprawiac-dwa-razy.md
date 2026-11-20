@@ -6,6 +6,7 @@ description: "Jak przegląd na koniec każdej sesji i codzienny przegląd wszyst
 summary: "Agent nie wyciąga wniosków z wczorajszej rozmowy, więc robią to za niego dwa przeglądy: jeden na koniec każdej sesji, drugi codziennie, nad wszystkimi sesjami z poprzedniego dnia. Po kilku miesiącach przestałem myśleć o tym, jak zmienić jego zachowanie."
 topic: Praca z AI
 order: 4
+published: 2026-10-24
 ---
 
 ## Detale, które wracają

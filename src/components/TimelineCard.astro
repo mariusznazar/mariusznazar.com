@@ -9,15 +9,15 @@ export interface CardView {
   approx: boolean;
   summary: string | null;
   tools: string[];
-  items: Array<{ title: string; status?: string; link?: string }>;
+  items: Array<{ title: string; status?: string; link?: string; linkLabel: string }>;
   badge: { text: string; accent: boolean } | null;
   link: { href: string; label: string } | null;
 }
 interface Props { card: CardView; locale: Locale }
 const { card, locale } = Astro.props;
 const labels = locale === 'pl'
-  ? { approximate: 'mies. do ustalenia', certificate: 'certyfikat' }
-  : { approximate: 'month uncertain', certificate: 'certificate' };
+  ? { approximate: 'mies. do ustalenia' }
+  : { approximate: 'month uncertain' };
 ---
 
 <div class="card">
@@ -33,7 +33,7 @@ const labels = locale === 'pl'
       {card.items.map((item) => (
         <li>
           {item.title}{item.status && <span class="card-item-status mono"> · {item.status}</span>}
-          {item.link && <span class="card-item-link mono"> · <a href={item.link}>{labels.certificate}</a></span>}
+          {item.link && <span class="card-item-link mono"> · <a href={item.link}>{item.linkLabel}</a></span>}
         </li>
       ))}
     </ul>

@@ -6,13 +6,15 @@
   org: BRAVE.courses
   summary: "Cel tych kursów: zdobyć wiedzę i znaleźć sposoby na praktyczne użycie AI w codziennej pracy."
   tools: []
-  status: planowany
+  status: w trakcie
   link: null
   items:
     - title: 10xDevs 4.0
-      status: planowany
+      status: ukończony
+      link: https://credsverse.com/credentials/75637e75-ef4b-4cde-b131-1ec2f376766b
     - title: MEGA.dev
-      status: planowany
+      status: ukończony
+      link: https://mariusznazar.com/certyfikaty/mega-developer.pdf
     - title: AI Product Heroes 3
       status: planowany
     - title: AI Tech Leaders

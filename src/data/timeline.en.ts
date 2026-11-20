@@ -57,10 +57,15 @@ export const timelineEn: Record<string, TimelineTranslation> = {
     summary: 'Architectural base drawings, cost estimates, bills of quantities, and stock lists in a design office.',
     tools: ['architectural base drawings', 'cost estimates', 'bills of quantities'],
   },
-  'strona-mariusznazar': {
-    title: 'This website',
-    summary: 'A personal website with a bio and materials about my working methods. Built with Astro and hosted on Cloudflare Pages.',
-    tools: ['Astro', 'Cloudflare Pages'],
+  'projekty-wlasne': {
+    title: 'Public side projects',
+    summary: 'Three things I build after hours and share publicly: this website, my process for building products with AI agents, and the game I test that process on.',
+    tools: ['Astro', 'TypeScript', 'React', 'Claude Code'],
+    itemTitles: [
+      'This website, with a bio and materials about my working methods',
+      'The Way: a product foundation in five files next to the code, and a task cycle from the description of a change to a pull request',
+      'Loop2: a browser game where you don’t control the characters, you write programs for them',
+    ],
   },
   'canvas-ai-managers-3': {
     title: 'AI implementation canvas from AI_Managers 3',

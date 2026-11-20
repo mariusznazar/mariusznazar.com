@@ -2,10 +2,12 @@
 locale: en
 key: product-foundation
 title: "What the code doesn't tell you, and how to write it down"
-description: "Five elements of a product foundation that sits next to the code and records what can't be read from it, using the game Loop as the example, together with the cost of working this way with AI agents."
+description: "Five elements of a product foundation that sits next to the code and records what can't be read from it, using the game Loop2 as the example, together with the cost of working this way with AI agents."
 summary: "Working with AI agents leaves behind a pile of specs and task descriptions that nobody goes back to. I'm trying something different: a foundation of five elements that sits next to the code and records what you can't read from the code: decisions with their reasons, rules, a part map, a glossary and facts about the world around the product. I show what each of them does and what it costs today."
 topic: Working with AI
 order: 6
+published: 2026-10-25
+updated: 2026-11-20
 ---
 
 ## Knowledge that ends up in the archive
@@ -14,11 +16,11 @@ Working with AI agents produces a whole lot of documents: direction, vision, des
 
 The thing is, hardly anyone goes back to the archive. Over nine months Alfredo Perez wrote a separate spec for every change and collected 238 of them. He didn't reopen a single one, and the agent didn't read them either, because there was no way to tell which one was current. Perez put it like this: "a spec that nothing reads isn't documentation, it's exhaust". He fixed it with fourteen specs, one for each capability of the product, which he keeps up to date together with the code. OpenSpec works the same way: the spec describes how the system works today.
 
-I'm trying something similar, just in my own way and in a different form. I'm building a foundation meant to be a kind of cast of the application taken from the other side: it describes the product's decisions, rules and parts so that after a year of work all that knowledge is still with the product. The assumption is that it's enough to define well what we want to build and write down the decisions and requirements, and the agents will write the code from that by themselves, good quality and tested from every side.
+I'm trying something similar, just in my own way and in a different form. I'm building a foundation meant to be a kind of cast of the application taken from the other side: it describes the product's decisions, rules and parts so that after a year of work all that knowledge is still with the product. The assumption is that it's enough to define well what we want to build and write down the decisions and requirements, and the agents will write the code from that by themselves, good quality and tested from every side. I've described the whole process, together with the task cycle, in the public repository [the-way](https://github.com/mariusznazar/the-way).
 
 ## Five elements
 
-The foundation is five files that sit in the product's repository next to the code and change together with it. I'm trying it out on Loop, a game I've been building from scratch since the beginning of October. It's a browser game in which you don't control the characters; you write programs for them, and they try to survive on the maps by themselves. The game has had a foundation since its first task, and today it holds 72 decisions, 50 rules and 30 facts. Under the description of each element there is one entry from that foundation, exactly as it is in the file.
+The foundation is five files that sit in the product's repository next to the code and change together with it. I'm trying it out on [Loop2](https://loop2.mariusznazar.com/), a game I've been building from scratch since the beginning of October. It's a browser game in which you don't control the characters; you write programs for them, and they try to survive on the maps by themselves. The game has had a foundation since its first task, and today it holds 431 decisions, 143 rules and 160 facts. Under the description of each element there is one entry from that foundation, exactly as it is in the file.
 
 **Decisions.** The decision log collects the choices we stick to in later work: what we chose, why, and which options were dropped, each with its reason. It also holds what the product is for and what it deliberately doesn't do. Every entry opens with one to three short sentences that say how things are to be, concrete enough to check whether the code keeps to them. Below them is a description of how to check it: a pointer to a rule with a test, or an example of a change that keeps to the decision and one that breaks it. The agent judges the code against these examples.
 
@@ -28,22 +30,24 @@ The foundation is five files that sit in the product's repository next to the co
 ```markdown
 ### D-50 — Whose is the chest?
 
-The chest belongs to a team. Each character belongs to exactly one team, and a character has no
-chest of its own.
+The chest belongs to a team and has a cap on the total count of pieces, by the same rule of capacity as the backpack. Each character belongs to exactly one team and uses its chest, and a character has no chest of its own.
 
 - **Scope:** simulation, browser-view
 - **Based on:** none
 - **Relations:** none
-- **Verification:** invariants: character-team. For the chest, an agent compares a change with the
-  decision:
-  - complies: a lone character shown with the chest of its one-member team
-  - violates: a character with a personal chest beside the team's; a character outside every team
-- **Origin:** koncepcja_projektowa.md in the vault (Notes/Projects/(P) Loop), D37 and §4 "Kierunek: przedmioty krążą między mapami" · the full approved entry: definicja_mvp_loop2.md in the vault (Notes/Projects/(P) Loop), § Projected foundation changes, "Whose is the chest?"
+- **Verification:** invariants: character-team · trip-transfer. tests: the chest held by the team,
+  with a cap on the count of the pieces of all its items together, a chest above it refused at a
+  load and a completion depositing no more than the room the pieces of another item leave; a
+  character holding no chest of its own.
+- **Origin:** none
 
-*Rationale:* a team of one behaves exactly as a lone character with a chest of its own; the shared
-chest is the one mechanism of cooperation — one character brings stone out of one map, another
-takes it to the next.
-*Rejected:* the player's chest — assigning a character to a team would change nothing; the
+*Rationale:* a team of one behaves exactly as a lone character with a chest of its own, as the single
+chest did before there were teams; the chest of a character is the chest of its team, the same object seen
+from the character's screen. One rule of capacity serves both the backpack and the chest, not two.
+The shared chest is the one mechanism of cooperation — one character brings stone out of one map,
+another takes it to the next.
+*Rejected:* the player's chest — assigning a character to a team would change nothing, so a team
+would be a drawer; the
 character's chest — no cooperation at all; a character outside a team with a personal chest — a
 second kind of chest and an exception everywhere it is read.
 ```
@@ -78,17 +82,26 @@ game minute by game minute, when they receive the same real-time inputs.
 ```markdown
 ## account-server
 
-The part is the account and save server: it serves the built game and handles the HTTP requests sent to it.
+The part is the account and save server: it serves the built game, handles the HTTP requests sent to it, owns the persistence of accounts, sessions and each player's saved game state and previous save, sends account email through the mail service, accepts the report of a failure that the browser sends and writes it as one line of its log, gives the operator a command that blocks and unblocks a player account, a command that grants and revokes the previous-save privilege of a player account, a command that gives and takes the owner role of an account and a command that writes one consistent backup of the database to its standard output, answers the routes of the owner panel — the list of accounts and the blocking, unblocking, granting and revoking of the privilege of another account — only to a session of an account with the owner role, checks the database's read, write and backup operations on the Node.js release of the image it is built into, and measures its own password work in the image it runs in.
 
 - **Files:** src/server/**
   tests/http.test.mjs
   tests/startup.test.mjs
+  tests/transport.test.mjs
+  tests/passwords.test.mjs
+  tests/account-storage.test.mjs
+  tests/account-owner.test.mjs
+  tests/owner-routes.test.mjs
+  tests/account-backup.test.mjs
+  tests/account-database-check.test.mjs
+  tests/account-database-check-standin.mjs
+  tests/account-mail.test.mjs
   tests/invariants/test_account_server_express_http.py
   tests/invariants/test_loop2_api_error_route.py
   tests/invariants/test_loop2_one_serving_process.py
   tests/invariants/test_account_server_occupied_address.py
   tests/invariants/test_account_server_default_address.py
-- **Depends on:** browser-view · simulation · build-tools
+- **Depends on:** browser-view · build-tools
 - **Trust boundary:** src/server/**
 ```
 
@@ -142,18 +155,20 @@ For the same reason, a few things have no separate place in the foundation. Test
 
 ## What it costs
 
-By "task" I mean one run from the description of a change to the pull request that I review and merge. Along the way some agents write the code, the tests and the foundation entries, and others review them. The last three tasks on the game looked like this (time is the agents' working time, not counting waiting for me):
+By "task" I mean one run from the description of a change to the pull request that I review and merge. Along the way some agents write the code, the tests and the foundation entries, and others review them. Three tasks on the game from the second half of November looked like this (time is the agents' working time, not counting waiting for me or the full test run):
 
 | Task | How it went | Time | Tokens |
 |---|---|---|---|
-| tests without a fixed port | one author | 44 min | 46M |
-| headquarters and team | one author | 51 min | 62M |
-| campfire and food | spec, plan, 14 slices | 3 h 50 min | 224M |
+| the word “wall” in the glossary | one author | 10 min | 12M |
+| 20 decisions shortened to the length limit | one author | 32 min | 42M |
+| the game’s balance instrument | plan, 10 slices | 2 h 19 min | 184M |
 
-A small change is done by one agent, without a plan, and it shows in the cost. A large change still takes the agents almost four hours. In each of the three runs, 96–98% of the tokens are the same context read in again: every agent reads the task, the plan and the foundation at every step. I've already managed to slim down my whole way of working on a product a bit, but it's still too heavy.
+In October a small change cost 44–51 minutes and 46–62M tokens, and a large one almost four hours and 224M. These aren't the same tasks, so they can't be compared one to one, but the direction is clear. Today the author of a change runs on a cheaper model than the one that reviews it. Nearly all the tokens are still the same context read in again: every agent reads the task, the plan and the foundation at every step. My whole way of working on a product is already much lighter, but it's still too heavy.
 
 ## In the end
 
 This is only the beginning, and I'm convinced the cost can be brought down while keeping what the foundation gives.
 
 If you want to try it, start with one element: decisions. The next time you make a choice together with an agent, write down next to the choice itself why you made it and which options were dropped, and keep that record in the repository next to the code.
+
+*Updated on November 20, 2026: the entry counts of the foundation, the sample entries, the task costs, and links to the game and the the-way repository.*
